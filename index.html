@@ -35,55 +35,62 @@
     .trust{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 24px;margin:36px 0 0;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;align-items:center}
     .trust-item{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:6px}
 
-    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;padding:28px 20px 0;max-width:1140px;margin:0 auto}
+    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;padding:28px 20px 0;max-width:900px;margin:0 auto}
     .filter-btn{padding:6px 16px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:.8rem;cursor:pointer;font-weight:600;transition:all .18s}
     .filter-btn:hover,.filter-btn.active{border-color:var(--brand);color:var(--brand-light);background:rgba(201,120,58,.1)}
 
-    .grid-wrap{max-width:1140px;margin:0 auto;padding:24px 20px 60px}
-    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
+    .grid-wrap{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+    .product-grid{display:flex;flex-direction:column;gap:20px}
 
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .22s,box-shadow .22s}
-    .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+    /* ── Card: left image, right info ── */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:row;transition:transform .22s,box-shadow .22s}
+    .card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.12)}
 
-    .img-wrap{position:relative;overflow:hidden}
-    .img-slider{display:flex;transition:transform .35s ease}
-    .img-slide{min-width:100%;aspect-ratio:3/4;background:#222}
+    /* Left: image column */
+    .img-wrap{position:relative;overflow:hidden;width:220px;min-width:220px;flex-shrink:0}
+    .img-slider{display:flex;transition:transform .35s ease;height:100%}
+    .img-slide{min-width:100%;height:100%;background:#f5e6ea}
     .img-slide img{width:100%;height:100%;object-fit:cover;display:block}
-    .img-nav{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:100%;padding:0 8px;pointer-events:none}
-    .img-arrow{pointer-events:all;background:rgba(0,0,0,.5);border:none;color:#fff;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center;transition:background .15s}
-    .img-arrow:hover{background:rgba(0,0,0,.8)}
+    .img-nav{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:100%;padding:0 6px;pointer-events:none}
+    .img-arrow{pointer-events:all;background:rgba(0,0,0,.45);border:none;color:#fff;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center;transition:background .15s}
+    .img-arrow:hover{background:rgba(0,0,0,.75)}
     .img-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:4px}
     .img-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .2s}
     .img-dot.on{background:#fff}
-    .color-tag{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);border-radius:20px;padding:3px 10px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff}
-    .badge{position:absolute;top:10px;right:10px;background:var(--brand);color:#fff;border-radius:6px;padding:3px 8px;font-size:.68rem;font-weight:700}
+    .color-tag{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);border-radius:20px;padding:3px 9px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff}
+    .badge{position:absolute;top:8px;right:8px;background:var(--brand);color:#fff;border-radius:6px;padding:2px 7px;font-size:.62rem;font-weight:700}
 
-    .card-body{padding:16px 16px 0;flex:1}
-    .card-title{font-size:.95rem;font-weight:700;line-height:1.35;margin-bottom:6px}
-    .card-meta{font-size:.78rem;color:var(--muted);margin-bottom:12px}
-    .price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
-    .price{font-size:1.5rem;font-weight:900;color:var(--brand-light)}
-    .price-orig{font-size:.88rem;color:var(--dim);text-decoration:line-through}
-    .price-save{font-size:.72rem;background:rgba(201,120,58,.15);color:var(--brand-light);border-radius:4px;padding:2px 6px;font-weight:700}
-    .size-label{font-size:.75rem;color:var(--muted);margin-bottom:6px;font-weight:600}
-    .size-picker{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-    .sz{border:1px solid var(--border);background:transparent;color:var(--text);border-radius:7px;padding:5px 10px;font-size:.78rem;cursor:pointer;font-weight:600;transition:all .15s}
+    /* Right: info column */
+    .card-right{flex:1;display:flex;flex-direction:column;min-width:0;padding:16px 16px 14px}
+    .card-title{font-size:.95rem;font-weight:700;line-height:1.35;margin-bottom:4px}
+    .card-meta{font-size:.75rem;color:var(--muted);margin-bottom:10px}
+    .price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+    .price{font-size:1.35rem;font-weight:900;color:var(--brand-light)}
+    .price-orig{font-size:.84rem;color:var(--dim);text-decoration:line-through}
+    .price-save{font-size:.68rem;background:rgba(201,120,58,.15);color:var(--brand-light);border-radius:4px;padding:2px 6px;font-weight:700}
+    .size-label{font-size:.72rem;color:var(--muted);margin-bottom:5px;font-weight:600}
+    .size-picker{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+    .sz{border:1px solid var(--border);background:transparent;color:var(--text);border-radius:7px;padding:4px 9px;font-size:.75rem;cursor:pointer;font-weight:600;transition:all .15s}
     .sz:hover{border-color:var(--brand-light);color:var(--brand-light)}
     .sz.selected{background:var(--brand);border-color:var(--brand);color:#fff}
 
-    /* ── channel section ── */
-    .channels{padding:0 14px 14px;display:flex;flex-direction:column;gap:7px}
+    /* divider */
+    .where-divider{margin:0 0 8px;font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;display:flex;align-items:center;gap:6px}
+    .where-divider::before,.where-divider::after{content:'';flex:1;height:1px;background:var(--border)}
 
-    .region-row{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 2px 4px}
-    .region-text{font-size:.72rem;font-weight:700;letter-spacing:.3px;text-align:center}
+    /* ── channel section ── */
+    .channels{display:flex;flex-direction:column;gap:6px}
+
+    .region-row{display:flex;align-items:center;justify-content:center;padding:4px 0 2px}
+    .region-text{font-size:.68rem;font-weight:700;letter-spacing:.3px;text-align:center}
     .us-text{color:#3a6fd8}
     .global-text{color:#2a9d55}
 
-    .ch-btn{display:flex;align-items:center;gap:9px;padding:11px 13px;border-radius:10px;font-size:.84rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:filter .18s,transform .1s;width:100%}
+    .ch-btn{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:9px;font-size:.8rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:filter .18s,transform .1s;width:100%}
     .ch-btn:active{transform:scale(.97)}
-    .ch-btn svg{width:17px;height:17px;flex-shrink:0}
+    .ch-btn svg{width:15px;height:15px;flex-shrink:0}
     .ch-label{flex:1;text-align:left}
-    .ch-tag{font-size:.63rem;font-weight:700;border-radius:4px;padding:2px 6px;white-space:nowrap;opacity:.85}
+    .ch-tag{font-size:.6rem;font-weight:700;border-radius:4px;padding:2px 5px;white-space:nowrap;opacity:.85}
 
     .btn-amazon{background:var(--amazon);color:#111}
     .btn-amazon:hover{filter:brightness(1.1)}
@@ -99,7 +106,26 @@
 
     footer{text-align:center;border-top:1px solid var(--border);padding:28px 20px;font-size:.76rem;color:var(--dim)}
     footer p+p{margin-top:6px}
-    @media(max-width:580px){.product-grid{grid-template-columns:1fr}.hero h1{font-size:1.9rem}}
+
+    /* Mobile: keep left-right, shrink image */
+    @media(max-width:600px){
+      .img-wrap{width:130px;min-width:130px}
+      .card-right{padding:10px 10px 10px}
+      .card-title{font-size:.82rem}
+      .card-meta{font-size:.68rem;margin-bottom:6px}
+      .price{font-size:1.1rem}
+      .price-orig,.price-save{font-size:.62rem}
+      .price-row{margin-bottom:6px;gap:5px}
+      .sz{padding:3px 7px;font-size:.68rem}
+      .size-picker{gap:4px;margin-bottom:8px}
+      .size-label{font-size:.65rem;margin-bottom:3px}
+      .ch-btn{padding:7px 8px;font-size:.72rem;gap:6px}
+      .ch-btn svg{width:13px;height:13px}
+      .ch-tag{font-size:.55rem;padding:1px 4px}
+      .region-text{font-size:.62rem}
+      .where-divider{font-size:.58rem}
+      .hero h1{font-size:1.9rem}
+    }
   </style>
 </head>
 <body>
@@ -154,7 +180,7 @@
 
 <script>
 // ══════════════════════════════════════════════
-// i18n — add more languages here as needed
+// i18n
 // ══════════════════════════════════════════════
 const I18N = {
   en: {
@@ -249,7 +275,6 @@ const I18N = {
   },
 };
 
-// Detect language from browser
 function detectLang() {
   const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
   if (lang.startsWith('zh')) return 'zh';
@@ -263,7 +288,6 @@ function detectLang() {
 const lang = detectLang();
 const T = I18N[lang] || I18N.en;
 
-// Apply translations to static elements
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('heroTitle').innerHTML = T.heroTitle;
   document.getElementById('heroDesc').textContent = T.heroDesc;
@@ -292,11 +316,7 @@ function openChannel(platform, id, webUrl) {
 }
 
 // ══════════════════════════════════════════════
-// PRODUCT DATA — add new products here
-// Fields: id, color, neckline, title, images[],
-//         price, compareAt, handle (Shopify),
-//         amazon_asin, amazon_url (affiliate link, optional),
-//         tiktok_id, variants { S,M,L,XL,2XL,3XL,4XL }
+// PRODUCT DATA
 // ══════════════════════════════════════════════
 const PRODUCTS = [
   {
@@ -395,7 +415,7 @@ function selectSize(productId, size, el) {
   state[productId] = size;
   el.closest('.size-picker').querySelectorAll('.sz').forEach(b => b.classList.remove('selected'));
   el.classList.add('selected');
-  el.closest('.card-body').querySelector('.size-label').textContent = T.sizeSelected + ' ' + size;
+  el.closest('.card-right').querySelector('.size-label').textContent = T.sizeSelected + ' ' + size;
   const card = el.closest('.card');
   const p = PRODUCTS.find(x => x.id === productId);
   const btn = card.querySelector('.btn-shopify');
@@ -423,45 +443,47 @@ function renderCard(p) {
   const slides = p.images.map(src => '<div class="img-slide"><img src="' + src + '" alt="' + p.title + '" loading="lazy"/></div>').join('');
   const szBtns = sizes.map(sz => '<button class="sz" onclick="selectSize(' + p.id + ',\'' + sz + '\',this)">' + sz + '</button>').join('');
   const amazonUrl = getAmazonUrl(p);
+  const navBtns = p.images.length > 1
+    ? '<div class="img-nav"><button class="img-arrow" onclick="slide(this,-1)">&#8249;</button><button class="img-arrow" onclick="slide(this,1)">&#8250;</button></div><div class="img-dots">' + dots + '</div>'
+    : '';
 
   return '<div class="card" data-color="' + p.color + '">'
+    // LEFT: image
     + '<div class="img-wrap">'
     +   '<div class="img-slider" data-idx="0">' + slides + '</div>'
-    +   '<div class="img-nav"><button class="img-arrow" onclick="slide(this,-1)">&#8249;</button><button class="img-arrow" onclick="slide(this,1)">&#8250;</button></div>'
-    +   '<div class="img-dots">' + dots + '</div>'
+    +   navBtns
     +   '<div class="color-tag">' + p.color + '</div>'
-    +   '<div class="badge">Save ' + save + '%</div>'
+    +   '<div class="badge">-' + save + '%</div>'
     + '</div>'
-    + '<div class="card-body">'
+    // RIGHT: info
+    + '<div class="card-right">'
     +   '<div class="card-title">' + p.title + '</div>'
     +   '<div class="card-meta">' + p.neckline + ' · 2-Piece Set · S\u20134XL</div>'
     +   '<div class="price-row"><span class="price">$' + p.price.toFixed(2) + '</span><span class="price-orig">$' + p.compareAt.toFixed(2) + '</span><span class="price-save">Save ' + save + '%</span></div>'
     +   '<div class="size-label">' + T.sizeChoose + '</div>'
     +   '<div class="size-picker">' + szBtns + '</div>'
-    + '</div>'
-    + '<div style="margin:4px 14px 6px;font-size:.68rem;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;display:flex;align-items:center;gap:8px">'
-    +   '<div style="flex:1;height:1px;background:var(--border)"></div>' + T.whereLabel + '<div style="flex:1;height:1px;background:var(--border)"></div>'
-    + '</div>'
-    + '<div class="channels">'
-    // US region label
-    +   '<div class="region-row"><span class="region-text us-text">' + T.usLabel + '</span></div>'
+    +   '<div class="where-divider">' + T.whereLabel + '</div>'
+    +   '<div class="channels">'
+    // US label
+    +     '<div class="region-row"><span class="region-text us-text">' + T.usLabel + '</span></div>'
     // Amazon
-    +   '<button class="ch-btn btn-amazon" onclick="openChannel(\'amazon\',\'' + p.amazon_asin + '\',\'' + amazonUrl + '\')">'
-    +     '<svg viewBox="0 0 24 24" fill="#111"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.661.661 0 01-.77.074c-1.08-.896-1.274-1.31-1.868-2.164-1.787 1.823-3.052 2.369-5.368 2.369-2.741 0-4.878-1.691-4.878-5.076 0-2.643 1.431-4.441 3.471-5.32 1.768-.779 4.24-.918 6.13-1.132V6.07c0-.779.06-1.698-.396-2.373-.397-.602-1.158-.851-1.831-.851-1.243 0-2.352.638-2.624 1.96-.056.296-.274.589-.576.604l-3.22-.347c-.272-.061-.574-.281-.496-.698C5.268 1.994 8.056.7 10.565.7c1.284 0 2.96.341 3.971 1.31C15.791 3.113 15.73 4.7 15.73 6.431v5.765c0 1.733.719 2.495 1.396 3.432.238.332.29.731-.014.978l-1.968 1.189zm3.266 2.919C18.556 22.288 14.671 24 11.236 24 6.419 24 2.082 22.148.053 18.918c-.194-.307.024-.471.26-.313 2.263 1.313 4.875 2.104 7.66 2.104 2.088 0 4.386-.432 6.503-1.326.319-.135.587.208.334.431zM21.405 21.2c-.264-.338-1.747-.16-2.414-.08-.203.023-.234-.152-.051-.28 1.183-.832 3.12-.591 3.347-.313.228.28-.06 2.226-1.17 3.155-.17.143-.332.067-.257-.12.251-.625.807-2.025.545-2.362z"/></svg>'
-    +     '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
-    +   '</button>'
+    +     '<button class="ch-btn btn-amazon" onclick="openChannel(\'amazon\',\'' + p.amazon_asin + '\',\'' + amazonUrl + '\')">'
+    +       '<svg viewBox="0 0 24 24" fill="#111"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.661.661 0 01-.77.074c-1.08-.896-1.274-1.31-1.868-2.164-1.787 1.823-3.052 2.369-5.368 2.369-2.741 0-4.878-1.691-4.878-5.076 0-2.643 1.431-4.441 3.471-5.32 1.768-.779 4.24-.918 6.13-1.132V6.07c0-.779.06-1.698-.396-2.373-.397-.602-1.158-.851-1.831-.851-1.243 0-2.352.638-2.624 1.96-.056.296-.274.589-.576.604l-3.22-.347c-.272-.061-.574-.281-.496-.698C5.268 1.994 8.056.7 10.565.7c1.284 0 2.96.341 3.971 1.31C15.791 3.113 15.73 4.7 15.73 6.431v5.765c0 1.733.719 2.495 1.396 3.432.238.332.29.731-.014.978l-1.968 1.189zm3.266 2.919C18.556 22.288 14.671 24 11.236 24 6.419 24 2.082 22.148.053 18.918c-.194-.307.024-.471.26-.313 2.263 1.313 4.875 2.104 7.66 2.104 2.088 0 4.386-.432 6.503-1.326.319-.135.587.208.334.431zM21.405 21.2c-.264-.338-1.747-.16-2.414-.08-.203.023-.234-.152-.051-.28 1.183-.832 3.12-.591 3.347-.313.228.28-.06 2.226-1.17 3.155-.17.143-.332.067-.257-.12.251-.625.807-2.025.545-2.362z"/></svg>'
+    +       '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
+    +     '</button>'
     // TikTok
-    +   '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\')">'
-    +     '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
-    +     '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
-    +   '</button>'
-    // Global region label
-    +   '<div class="region-row"><span class="region-text global-text">' + T.globalLabel + '</span></div>'
+    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\')">'
+    +       '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
+    +       '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
+    +     '</button>'
+    // Global label
+    +     '<div class="region-row"><span class="region-text global-text">' + T.globalLabel + '</span></div>'
     // Shopify
-    +   '<a class="ch-btn btn-shopify" href="https://huohuli.myshopify.com/products/' + p.handle + '" target="_blank">'
-    +     '<svg viewBox="0 0 24 24" fill="white"><path d="M15.337 2.102a.563.563 0 00-.54-.486c-.237-.013-4.26-.08-4.26-.08s-2.833-2.754-3.116-3.038c-.09-.09-.21-.135-.336-.135l-.552 19.181 9.413 2.037 5.095-2.178L15.337 2.102z"/></svg>'
-    +     '<span class="ch-label">' + T.btnShopify + '</span><span class="ch-tag">' + T.tagShopify + '</span>'
-    +   '</a>'
+    +     '<a class="ch-btn btn-shopify" href="https://huohuli.myshopify.com/products/' + p.handle + '" target="_blank">'
+    +       '<svg viewBox="0 0 24 24" fill="white"><path d="M15.337 2.102a.563.563 0 00-.54-.486c-.237-.013-4.26-.08-4.26-.08s-2.833-2.754-3.116-3.038c-.09-.09-.21-.135-.336-.135l-.552 19.181 9.413 2.037 5.095-2.178L15.337 2.102z"/></svg>'
+    +       '<span class="ch-label">' + T.btnShopify + '</span><span class="ch-tag">' + T.tagShopify + '</span>'
+    +     '</a>'
+    +   '</div>'
     + '</div>'
     + '</div>';
 }

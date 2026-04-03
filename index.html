@@ -43,14 +43,14 @@
     .product-grid{display:flex;flex-direction:column;gap:20px}
 
     /* ── Card: left image, right info ── */
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:row;transition:transform .22s,box-shadow .22s}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:row;min-height:320px;transition:transform .22s,box-shadow .22s}
     .card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.12)}
 
-    /* Left: image column */
-    .img-wrap{position:relative;overflow:hidden;width:220px;min-width:220px;flex-shrink:0}
+    /* Left: image column — exactly 50% width */
+    .img-wrap{position:relative;overflow:hidden;width:50%;flex-shrink:0;align-self:stretch}
     .img-slider{display:flex;transition:transform .35s ease;height:100%}
     .img-slide{min-width:100%;height:100%;background:#f5e6ea}
-    .img-slide img{width:100%;height:100%;object-fit:cover;display:block}
+    .img-slide img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
     .img-nav{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:100%;padding:0 6px;pointer-events:none}
     .img-arrow{pointer-events:all;background:rgba(0,0,0,.45);border:none;color:#fff;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center;transition:background .15s}
     .img-arrow:hover{background:rgba(0,0,0,.75)}
@@ -75,8 +75,8 @@
     .sz.selected{background:var(--brand);border-color:var(--brand);color:#fff}
 
     /* divider */
-    .where-divider{margin:0 0 8px;font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;display:flex;align-items:center;gap:6px}
-    .where-divider::before,.where-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+    .where-divider{margin:0 0 8px;font-size:.72rem;font-weight:800;color:#555;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:6px}
+    .where-divider::before,.where-divider::after{content:'';flex:1;height:1.5px;background:#ccc}
 
     /* ── channel section ── */
     .channels{display:flex;flex-direction:column;gap:6px}
@@ -109,8 +109,8 @@
 
     /* Mobile: left-right layout, compact */
     @media(max-width:600px){
-      /* Image: fixed width + aspect ratio so full photo shows */
-      .img-wrap{width:140px;min-width:140px;aspect-ratio:3/4;align-self:stretch}
+      /* Image: 50% width, full height */
+      .img-wrap{width:50%;min-width:unset;align-self:stretch}
       .img-slider{height:100%}
       .img-slide{height:100%}
 

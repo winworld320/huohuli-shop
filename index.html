@@ -81,10 +81,10 @@
     /* ── channel section ── */
     .channels{display:flex;flex-direction:column;gap:6px}
 
-    .region-row{display:flex;align-items:center;justify-content:center;padding:4px 0 2px}
-    .region-text{font-size:.68rem;font-weight:700;letter-spacing:.3px;text-align:center}
-    .us-text{color:#3a6fd8}
-    .global-text{color:#2a9d55}
+    .region-row{display:flex;align-items:center;justify-content:center;padding:5px 0 3px}
+    .region-text{font-size:.7rem;font-weight:700;letter-spacing:.3px;text-align:center;padding:3px 12px;border-radius:20px;display:inline-block}
+    .us-text{color:#3a6fd8;background:rgba(58,111,216,.1);border:1px solid rgba(58,111,216,.25)}
+    .global-text{color:#2a9d55;background:rgba(42,157,85,.1);border:1px solid rgba(42,157,85,.25)}
 
     .ch-btn{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:9px;font-size:.8rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:filter .18s,transform .1s;width:100%}
     .ch-btn:active{transform:scale(.97)}
@@ -107,23 +107,44 @@
     footer{text-align:center;border-top:1px solid var(--border);padding:28px 20px;font-size:.76rem;color:var(--dim)}
     footer p+p{margin-top:6px}
 
-    /* Mobile: keep left-right, shrink image */
+    /* Mobile: left-right layout, compact */
     @media(max-width:600px){
-      .img-wrap{width:130px;min-width:130px}
+      /* Image: fixed width + aspect ratio so full photo shows */
+      .img-wrap{width:140px;min-width:140px;aspect-ratio:3/4;align-self:stretch}
+      .img-slider{height:100%}
+      .img-slide{height:100%}
+
+      /* Right panel */
       .card-right{padding:10px 10px 10px}
-      .card-title{font-size:.82rem}
-      .card-meta{font-size:.68rem;margin-bottom:6px}
-      .price{font-size:1.1rem}
-      .price-orig,.price-save{font-size:.62rem}
-      .price-row{margin-bottom:6px;gap:5px}
-      .sz{padding:3px 7px;font-size:.68rem}
+      .card-title{font-size:.8rem;margin-bottom:3px}
+      .card-meta{font-size:.66rem;margin-bottom:6px}
+
+      /* Price */
+      .price{font-size:1.05rem}
+      .price-orig{font-size:.6rem}
+      .price-save{font-size:.58rem;padding:1px 5px}
+      .price-row{margin-bottom:6px;gap:4px;flex-wrap:wrap}
+
+      /* Sizes */
+      .size-label{font-size:.63rem;margin-bottom:3px}
       .size-picker{gap:4px;margin-bottom:8px}
-      .size-label{font-size:.65rem;margin-bottom:3px}
-      .ch-btn{padding:7px 8px;font-size:.72rem;gap:6px}
-      .ch-btn svg{width:13px;height:13px}
-      .ch-tag{font-size:.55rem;padding:1px 4px}
-      .region-text{font-size:.62rem}
-      .where-divider{font-size:.58rem}
+      .sz{padding:3px 6px;font-size:.65rem;border-radius:5px}
+
+      /* Where-to-buy divider */
+      .where-divider{font-size:.6rem;margin-bottom:6px}
+
+      /* Region labels — more prominent pill style */
+      .region-row{padding:3px 0 2px}
+      .region-text{font-size:.65rem;padding:3px 10px;border-radius:20px;display:inline-block}
+      .us-text{background:rgba(58,111,216,.12);color:#3a6fd8;border:1px solid rgba(58,111,216,.25)}
+      .global-text{background:rgba(42,157,85,.12);color:#2a9d55;border:1px solid rgba(42,157,85,.25)}
+
+      /* Channel buttons */
+      .channels{gap:5px}
+      .ch-btn{padding:7px 8px;font-size:.7rem;gap:5px;border-radius:8px}
+      .ch-btn svg{width:12px;height:12px;flex-shrink:0}
+      .ch-tag{font-size:.54rem;padding:1px 4px}
+
       .hero h1{font-size:1.9rem}
     }
   </style>

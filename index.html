@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUOHULI – Soft Pajamas Sets | Shop on Your Favorite Platform</title>
+  <meta name="description" content="HUOHULI Women's Pajamas Sets – Ultra-soft, S-4XL. Shop on Amazon, TikTok Shop, or Shopify." />
+  <style>
+    :root {
+      --brand: #c9783a;
+      --brand-light: #e8956a;
+      --brand-dark: #9a5520;
+      --bg: #0d0d0d;
+      --surface: #171717;
+      --card: #1e1e1e;
+      --border: #2a2a2a;
+      --text: #f0ede8;
+      --muted: #888;
+      --dim: #555;
+      --amazon: #ff9900;
+      --tiktok-cyan: #69c9d0;
+      --shopify: #96bf48;
+      --radius: 14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(13,13,13,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 58px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .logo-text { font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--text); }
+    .logo-text span { color: var(--brand-light); }
+    .header-badge {
+      font-size: 0.72rem; background: rgba(201,120,58,0.15);
+      border: 1px solid rgba(201,120,58,0.3);
+      color: var(--brand-light); border-radius: 20px;
+      padding: 3px 10px; font-weight: 600; letter-spacing: 0.5px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      text-align: center;
+      padding: 56px 24px 40px;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,120,58,0.1) 0%, transparent 70%);
+    }
+    .tiktok-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 0.72rem; color: var(--tiktok-cyan);
+      font-weight: 700; letter-spacing: 0.5px; margin-bottom: 22px;
+    }
+    .tiktok-pill svg { width: 13px; height: 13px; fill: var(--tiktok-cyan); }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900; line-height: 1.12;
+      max-width: 600px; margin: 0 auto 14px;
+    }
+    .hero h1 em { font-style: normal; color: var(--brand-light); }
+    .hero p {
+      color: var(--muted); font-size: 1rem; max-width: 500px;
+      margin: 0 auto 28px; line-height: 1.65;
+    }
+    .hero-chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center; margin-bottom: 0;
+    }
+    .chip {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 0.78rem; color: var(--muted);
+    }
+
+    /* ─── TRUST BAR ─── */
+    .trust {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px; margin: 36px 0 0;
+      display: flex; flex-wrap: wrap; gap: 8px 28px;
+      justify-content: center; align-items: center;
+    }
+    .trust-item { font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .trust-item .icon { font-size: 1rem; }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      padding: 28px 20px 0; max-width: 1140px; margin: 0 auto;
+    }
+    .filter-btn {
+      padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--muted);
+      font-size: 0.8rem; cursor: pointer; font-weight: 600;
+      transition: all .18s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--brand); color: var(--brand-light);
+      background: rgba(201,120,58,0.1);
+    }
+
+    /* ─── GRID ─── */
+    .grid-wrap {
+      max-width: 1140px; margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+    }
+
+    /* ─── PRODUCT CARD ─── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+
+    /* image carousel */
+    .img-wrap { position: relative; overflow: hidden; }
+    .img-slider { display: flex; transition: transform .35s ease; }
+    .img-slide {
+      min-width: 100%; aspect-ratio: 3/4;
+      background: #222;
+    }
+    .img-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .img-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      display: flex; justify-content: space-between; width: 100%;
+      padding: 0 8px; pointer-events: none;
+    }
+    .img-arrow {
+      pointer-events: all; background: rgba(0,0,0,0.5);
+      border: none; color: #fff; border-radius: 50%;
+      width: 28px; height: 28px; cursor: pointer;
+      font-size: 0.75rem; display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    .img-arrow:hover { background: rgba(0,0,0,0.8); }
+    .img-dots {
+      position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 4px;
+    }
+    .img-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transition: background .2s;
+    }
+    .img-dot.on { background: #fff; }
+
+    .color-tag {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px);
+      border-radius: 20px; padding: 3px 10px;
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; color: var(--text);
+    }
+    .badge {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--brand); color: #fff;
+      border-radius: 6px; padding: 3px 8px;
+      font-size: 0.68rem; font-weight: 700;
+    }
+
+    /* card body */
+    .card-body { padding: 16px 16px 0; flex: 1; }
+    .card-title { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
+    .card-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 12px; }
+    .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+    .price { font-size: 1.5rem; font-weight: 900; color: var(--brand-light); }
+    .price-orig { font-size: 0.88rem; color: var(--dim); text-decoration: line-through; }
+    .price-save {
+      font-size: 0.72rem; background: rgba(201,120,58,0.15);
+      color: var(--brand-light); border-radius: 4px; padding: 2px 6px; font-weight: 700;
+    }
+
+    /* size picker */
+    .size-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+    .size-picker { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .sz {
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text); border-radius: 7px;
+      padding: 5px 10px; font-size: 0.78rem; cursor: pointer;
+      font-weight: 600; transition: all .15s;
+    }
+    .sz:hover { border-color: var(--brand-light); color: var(--brand-light); }
+    .sz.selected {
+      background: var(--brand); border-color: var(--brand); color: #fff;
+    }
+
+    /* channels */
+    .divider-label {
+      text-align: center; font-size: 0.68rem; color: var(--dim);
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin: 0 16px 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .divider-label::before, .divider-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .channels { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 8px; }
+    .ch-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 14px; border-radius: 10px;
+      font-size: 0.85rem; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: filter .18s, transform .1s; width: 100%;
+    }
+    .ch-btn:active { transform: scale(0.97); }
+    .ch-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .ch-label { flex: 1; text-align: left; }
+    .ch-arrow { opacity: 0.55; }
+
+    .btn-shopify { background: var(--shopify); color: #fff; }
+    .btn-shopify:hover { filter: brightness(1.12); }
+
+    .btn-amazon { background: var(--amazon); color: #111; }
+    .btn-amazon:hover { filter: brightness(1.1); }
+
+    .btn-tiktok { background: #111; color: #fff; border: 1px solid #2a2a2a; }
+    .btn-tiktok:hover { filter: brightness(1.5); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center; border-top: 1px solid var(--border);
+      padding: 28px 20px; font-size: 0.76rem; color: var(--dim);
+    }
+    footer p + p { margin-top: 6px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 580px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">
+    <div class="logo-icon">🔥</div>
+    <div class="logo-text">HUOHU<span>LI</span></div>
+  </a>
+  <div class="header-badge">As Seen on TikTok</div>
+</header>
+
+<section class="hero">
+  <div class="tiktok-pill">
+    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>
+    Trending on TikTok
+  </div>
+  <h1>Cloud-Soft Pajamas<br/><em>Pick Your Size, Pick Your Store</em></h1>
+  <p>Ultra-soft 95% polyester blend. Sizes S–4XL. Free shipping on orders over \$50. Choose how you'd like to buy.</p>
+  <div class="hero-chips">
+    <span class="chip">95% Polyester · 5% Spandex</span>
+    <span class="chip">S · M · L · XL · 2XL · 3XL · 4XL</span>
+    <span class="chip">Machine Washable</span>
+    <span class="chip">Free Returns</span>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-item"><span class="icon">🔒</span> Secure Checkout</div>
+  <div class="trust-item"><span class="icon">🚚</span> Free Shipping \$50+</div>
+  <div class="trust-item"><span class="icon">↩️</span> 30-Day Returns</div>
+  <div class="trust-item"><span class="icon">📦</span> Fast Dispatch</div>
+</div>
+
+<!-- Color Filter -->
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-color="all" onclick="filterColor(this)">All Colors</button>
+  <button class="filter-btn" data-color="Black" onclick="filterColor(this)">⚫ Black</button>
+  <button class="filter-btn" data-color="Burgundy" onclick="filterColor(this)">🟥 Burgundy</button>
+  <button class="filter-btn" data-color="Blue" onclick="filterColor(this)">🔵 Blue</button>
+  <button class="filter-btn" data-color="Army Green" onclick="filterColor(this)">🟢 Army Green</button>
+  <button class="filter-btn" data-color="Coffee" onclick="filterColor(this)">🟫 Coffee</button>
+</div>
+
+<div class="grid-wrap">
+  <div class="product-grid" id="productGrid"></div>
+</div>
+
+<footer>
+  <p>© 2026 HUOHULI · All prices in USD · Links open on third-party platforms</p>
+  <p>Free shipping on orders over \$50 · 30-day hassle-free returns</p>
+</footer>
+
+<script>
+// ─── PRODUCT DATA ─── (sourced from huohuli.myshopify.com)
+const PRODUCTS = [
+  {
+    id: 1,
+    color: "Black",
+    neckline: "V-Neck",
+    title: "Women's V-Neck Black Pajamas Set",
+    shortTitle: "V-Neck · Black",
+    images: [
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41uXiJ88klL._AC_SL1500_f5d8bc00-01ee-45dd-8ee8-806d3241285d.jpg?v=1775133723",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51r6KVTxZlL._AC_SL1500_cc59bac1-a590-4dd4-b9ad-804898b2bf74.jpg?v=1775133723",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41Gue3AdNiL._AC_SL1500.jpg?v=1775133723",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41B4UL8fQCL._AC_SL1500_5005c58d-aa21-4145-a9ad-0413ae95126a.jpg?v=1775133723"
+    ],
+    price: 27.99,
+    compareAt: 45.99,
+    handle: "womens-v-neck-black-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
+    variants: {
+      "S":   44831599558726,
+      "M":   44831599591494,
+      "L":   44831599624262,
+      "XL":  44831599657030,
+      "2XL": 44831599689798,
+      "3XL": 44831599722566,
+      "4XL": 44831599755334
+    }
+  },
+  {
+    id: 2,
+    color: "Burgundy",
+    neckline: "V-Neck",
+    title: "Women's V-Neck Burgundy Pajamas Set",
+    shortTitle: "V-Neck · Burgundy",
+    images: [
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41xQ9aaikTL._AC_SL1500_460fbaa3-c31b-4418-a2a6-be3b1a8f31bc.jpg?v=1775133759",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51BM2gea_XL._AC_SL1500_7e035cc4-a10c-41ba-a3a1-0330151cbad1.jpg?v=1775133759",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41M6TzrOccL._AC_SL1500_aa740e9d-0e4c-4a57-b9d6-35f143172afd.jpg?v=1775133759",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41u_z_NZTML._AC_SL1500_59a224b7-71bd-4c6f-9971-61d13158aa04.jpg?v=1775133759"
+    ],
+    price: 27.99,
+    compareAt: 45.99,
+    handle: "womens-v-neck-burgundy-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
+    variants: {
+      "S":   44831600279622,
+      "M":   44831600312390,
+      "L":   44831600345158,
+      "XL":  44831600377926,
+      "2XL": 44831600410694,
+      "3XL": 44831600443462,
+      "4XL": 44831600476230
+    }
+  },
+  {
+    id: 3,
+    color: "Blue",
+    neckline: "V-Neck",
+    title: "Women's V-Neck Blue Pajamas Set",
+    shortTitle: "V-Neck · Blue",
+    images: [
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/512wG4OZsnL._AC_SL1500_289f8b38-4569-4f2e-a631-78170974e6ed.jpg?v=1775133741",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/519sRwZq2gL._AC_SL1500_bc1cdb90-f784-4fb7-8b8a-7700c48f6975.jpg?v=1775133741",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/411FQ5j86QL._AC_SL1500_d0fda235-c066-4e7a-9a4b-d9452f8ee348.jpg?v=1775133741",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41vw5uXtGCL._AC_SL1500_dd657d3c-987e-4156-bb6f-75a52b3438a0.jpg?v=1775133741"
+    ],
+    price: 27.99,
+    compareAt: 45.99,
+    handle: "womens-v-neck-blue-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
+    variants: {
+      "S":   44831599886406,
+      "M":   44831599919174,
+      "L":   44831599951942,
+      "XL":  44831599984710,
+      "2XL": 44831600017478,
+      "3XL": 44831600050246,
+      "4XL": 44831600083014
+    }
+  },
+  {
+    id: 4,
+    color: "Army Green",
+    neckline: "V-Neck",
+    title: "Women's V-Neck Army Green Pajamas Set",
+    shortTitle: "V-Neck · Army Green",
+    images: [
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41BAuf8oXRL._AC_SL1500_066175a6-2867-4bc9-9522-dc591614beb9.jpg?v=1775133705",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51TXByO_qdL._AC_SL1500_64627a87-851e-41b5-b252-946b5845445d.jpg?v=1775133705",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41NiVpIwc_L._AC_SL1500_00e4b58e-6670-49a5-9320-3ca54c01928d.jpg?v=1775133705",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41rMGVFsluL._AC_SL1500_c16ba6b6-4ead-4e93-9112-98b2ad1f90e7.jpg?v=1775133705"
+    ],
+    price: 27.99,
+    compareAt: 45.99,
+    handle: "womens-v-neck-army-green-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
+    variants: {
+      "S":   44831599132742,
+      "M":   44831599165510,
+      "L":   44831599198278,
+      "XL":  44831599231046,
+      "2XL": 44831599263814,
+      "3XL": 44831599296582,
+      "4XL": 44831599329350
+    }
+  },
+  {
+    id: 5,
+    color: "Coffee",
+    neckline: "V-Neck",
+    title: "Women's V-Neck Coffee Pajamas Set",
+    shortTitle: "V-Neck · Coffee",
+    images: [
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51TcI3W73ZL._AC_SL1500_508072b6-c8d3-47b7-afca-7cd0ab72823b.jpg?v=1775133776",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51IH85BniTL._AC_SL1500_e113237e-964a-4b92-83a0-0b5defd7886d.jpg?v=1775133776",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41fUrPyBFaL._AC_SL1500_9aae6527-c1c2-438f-9daa-b0e302f584f5.jpg?v=1775133776",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41qhwtYkblL._AC_SL1500_b2a002f8-0a0c-46f0-95e1-5de459ff262e.jpg?v=1775133776"
+    ],
+    price: 27.99,
+    compareAt: 45.99,
+    handle: "womens-v-neck-coffee-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
+    variants: {
+      "S":   44831600541766,
+      "M":   44831600574534,
+      "L":   44831600607302,
+      "XL":  44831600640070,
+      "2XL": 44831600672838,
+      "3XL": 44831600705606,
+      "4XL": 44831600738374
+    }
+  },
+  {
+    id: 6,
+    color: "Burgundy",
+    neckline: "Round Neck",
+    title: "Women's Round Neck Burgundy Pajamas Set",
+    shortTitle: "Round Neck · Burgundy",
+    images: [
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41xQ9aaikTL._AC_SL1500_460fbaa3-c31b-4418-a2a6-be3b1a8f31bc.jpg?v=1775133759",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51BM2gea_XL._AC_SL1500_7e035cc4-a10c-41ba-a3a1-0330151cbad1.jpg?v=1775133759"
+    ],
+    price: 27.99,
+    compareAt: 45.99,
+    handle: "womens-round-neck-burgundy-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
+    variants: {
+      "S":   44831598313542,
+      "M":   44831598346310,
+      "L":   44831598379078,
+      "XL":  44831598411846,
+      "2XL": 44831598444614,
+      "3XL": 44831598477382,
+      "4XL": 44831598510150
+    }
+  },
+  {
+    id: 7,
+    color: "Coffee",
+    neckline: "Round Neck",
+    title: "Women's Round Neck Coffee Pajamas Set",
+    shortTitle: "Round Neck · Coffee",
+    images: [
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41ywQwutfxL._AC_SL1500_a5e90cc4-0f08-4f94-a70c-672a38256ec5.jpg?v=1775133673",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51SH1s9a_cL._AC_SL1500_bf46194d-de24-461e-ae94-3d7b9d7a60e2.jpg?v=1775133673",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41Gng9CiFaL._AC_SL1500_225980fe-42bf-4f6f-918d-b38d03c1bde9.jpg?v=1775133673"
+    ],
+    price: 27.99,
+    compareAt: 45.99,
+    handle: "womens-round-neck-coffee-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
+    variants: {
+      "S":   44831598608454,
+      "M":   44831598641222,
+      "L":   44831598673990,
+      "XL":  44831598706758,
+      "2XL": 44831598739526,
+      "3XL": 44831598772294,
+      "4XL": 44831598805062
+    }
+  }
+];
+
+// ── State ──
+const state = {}; // productId -> selected size
+PRODUCTS.forEach(p => state[p.id] = null);
+
+// ── Helpers ──
+function shopifyUrl(p) {
+  const sz = state[p.id];
+  const variantId = sz ? p.variants[sz] : null;
+  const base = `https://huohuli.myshopify.com/products/${p.handle}`;
+  return variantId ? `${base}?variant=${variantId}` : base;
+}
+
+// ── Size select ──
+function selectSize(productId, size, el) {
+  state[productId] = size;
+  // update UI
+  el.closest('.size-picker').querySelectorAll('.sz').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  // update label
+  const lbl = el.closest('.card-body').querySelector('.size-label');
+  lbl.textContent = `Size: ${size}`;
+  // update channel buttons
+  const card = el.closest('.card');
+  updateBuyButtons(card, productId);
+}
+
+function updateBuyButtons(card, productId) {
+  const p = PRODUCTS.find(x => x.id === productId);
+  const sz = state[productId];
+  // shopify
+  const shopifyBtn = card.querySelector('.btn-shopify');
+  if (shopifyBtn) {
+    shopifyBtn.href = shopifyUrl(p);
+    shopifyBtn.querySelector('.ch-label').textContent = sz ? `Buy on Shopify (${sz})` : 'Buy on Shopify';
+  }
+}
+
+// ── Image carousel ──
+function slide(btn, dir) {
+  const wrap = btn.closest('.img-wrap');
+  const slider = wrap.querySelector('.img-slider');
+  const slides = slider.querySelectorAll('.img-slide');
+  const dots = wrap.querySelectorAll('.img-dot');
+  let idx = parseInt(slider.dataset.idx || 0) + dir;
+  if (idx < 0) idx = slides.length - 1;
+  if (idx >= slides.length) idx = 0;
+  slider.dataset.idx = idx;
+  slider.style.transform = `translateX(-${idx * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+}
+
+// ── Render ──
+function renderCard(p) {
+  const save = Math.round((1 - p.price / p.compareAt) * 100);
+  const sizes = Object.keys(p.variants);
+
+  const dotsHtml = p.images.map((_, i) =>
+    `<div class="img-dot ${i === 0 ? 'on' : ''}"></div>`
+  ).join('');
+
+  const slidesHtml = p.images.map(src =>
+    `<div class="img-slide"><img src="${src}" alt="${p.title}" loading="lazy" /></div>`
+  ).join('');
+
+  const sizeHtml = sizes.map(sz =>
+    `<button class="sz" onclick="selectSize(${p.id}, '${sz}', this)">${sz}</button>`
+  ).join('');
+
+  return `
+    <div class="card" data-color="${p.color}">
+      <div class="img-wrap">
+        <div class="img-slider" data-idx="0">${slidesHtml}</div>
+        <div class="img-nav">
+          <button class="img-arrow" onclick="slide(this,-1)">‹</button>
+          <button class="img-arrow" onclick="slide(this,1)">›</button>
+        </div>
+        <div class="img-dots">${dotsHtml}</div>
+        <div class="color-tag">${p.color}</div>
+        <div class="badge">Save ${save}%</div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-title">${p.title}</div>
+        <div class="card-meta">${p.neckline} · 2-Piece Set · S–4XL · Machine Washable</div>
+        <div class="price-row">
+          <span class="price">$${p.price.toFixed(2)}</span>
+          <span class="price-orig">$${p.compareAt.toFixed(2)}</span>
+          <span class="price-save">Save ${save}%</span>
+        </div>
+        <div class="size-label">Size: choose one</div>
+        <div class="size-picker">${sizeHtml}</div>
+      </div>
+
+      <div class="divider-label">Where to buy</div>
+      <div class="channels">
+        <a class="ch-btn btn-shopify" href="${`https://huohuli.myshopify.com/products/${p.handle}`}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M15.337 2.102a.563.563 0 00-.54-.486c-.237-.013-4.26-.08-4.26-.08s-2.833-2.754-3.116-3.038c-.09-.09-.21-.135-.336-.135l-.552 19.181 9.413 2.037 5.095-2.178L15.337 2.102zM11.64 3.416l-1.02.312c-.184-.72-.504-1.617-.953-2.27.907.154 1.546.878 1.973 1.958zm-1.76.508c-.646.196-1.353.41-2.06.626.41-1.434 1.155-2.825 2.19-3.59.3.755.502 1.767.565 2.672l-.695.292z"/></svg>
+          <span class="ch-label">Buy on Shopify</span>
+          <span class="ch-arrow">→</span>
+        </a>
+        <a class="ch-btn btn-amazon" href="https://www.amazon.com/s?k=huohuli+pajamas" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#111"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.661.661 0 01-.77.074c-1.08-.896-1.274-1.31-1.868-2.164-1.787 1.823-3.052 2.369-5.368 2.369-2.741 0-4.878-1.691-4.878-5.076 0-2.643 1.431-4.441 3.471-5.32 1.768-.779 4.24-.918 6.13-1.132V6.07c0-.779.06-1.698-.396-2.373-.397-.602-1.158-.851-1.831-.851-1.243 0-2.352.638-2.624 1.96-.056.296-.274.589-.576.604l-3.22-.347c-.272-.061-.574-.281-.496-.698C5.268 1.994 8.056.7 10.565.7c1.284 0 2.96.341 3.971 1.31C15.791 3.113 15.73 4.7 15.73 6.431v5.765c0 1.733.719 2.495 1.396 3.432.238.332.29.731-.014.978l-1.968 1.189zm3.266 2.919C18.556 22.288 14.671 24 11.236 24 6.419 24 2.082 22.148.053 18.918c-.194-.307.024-.471.26-.313 2.263 1.313 4.875 2.104 7.66 2.104 2.088 0 4.386-.432 6.503-1.326.319-.135.587.208.334.431zM21.405 21.2c-.264-.338-1.747-.16-2.414-.08-.203.023-.234-.152-.051-.28 1.183-.832 3.12-.591 3.347-.313.228.28-.06 2.226-1.17 3.155-.17.143-.332.067-.257-.12.251-.625.807-2.025.545-2.362z"/></svg>
+          <span class="ch-label">Buy on Amazon</span>
+          <span class="ch-arrow">→</span>
+        </a>
+        <a class="ch-btn btn-tiktok" href="https://www.tiktok.com/shop" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>
+          <span class="ch-label">Buy on TikTok Shop</span>
+          <span class="ch-arrow">→</span>
+        </a>
+      </div>
+    </div>`;
+}
+
+// ── Filter ──
+let currentFilter = 'all';
+function filterColor(btn) {
+  currentFilter = btn.dataset.color;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+
+function renderGrid() {
+  const grid = document.getElementById('productGrid');
+  const filtered = currentFilter === 'all'
+    ? PRODUCTS
+    : PRODUCTS.filter(p => p.color === currentFilter);
+  grid.innerHTML = filtered.map(renderCard).join('');
+}
+
+renderGrid();
+</script>
+</body>
+</html>

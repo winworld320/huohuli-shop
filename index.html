@@ -351,10 +351,21 @@ function openChannel(platform, id, webUrl, productTitle) {
     return;
   }
 
-  // TikTok 内置浏览器：直接 location.href 跳 scheme，1秒后降级网页
+  // TikTok / 微信内置浏览器：直接 location.href 跳 scheme
+  // 用 visibilitychange 检测是否唤起成功，成功则取消降级
   if (isTikTokBrowser || isWechat) {
+    var appOpened = false;
+    var fallbackTimer = setTimeout(function(){
+      if (!appOpened) window.location.href = webUrl;
+    }, 1000);
+    document.addEventListener('visibilitychange', function onHide(){
+      if (document.hidden) {
+        appOpened = true;
+        clearTimeout(fallbackTimer);
+        document.removeEventListener('visibilitychange', onHide);
+      }
+    });
     window.location.href = appUrl;
-    setTimeout(function(){ window.location.href = webUrl; }, 1000);
     return;
   }
 

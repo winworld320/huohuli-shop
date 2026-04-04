@@ -190,7 +190,7 @@ const I18N = {
     usLabel: '🇺🇸 US Customers', globalLabel: '🌍 Worldwide',
     btnAmazon: 'Buy on Amazon', tagAmazon: 'Fast Prime',
     btnTiktok: 'Buy on TikTok Shop', tagTiktok: 'Exclusive Deals',
-    btnShopify: 'Buy on HUOHULI Official Store', tagShopify: 'Ships Anywhere',
+    btnShopify: 'Buy on Official Store', tagShopify: 'Ships Anywhere',
     footerNote: 'Links open on third-party platforms',
     footerShip: 'Free shipping on orders over $50 · 30-day hassle-free returns',
     headerBadge: 'As Seen on TikTok',
@@ -205,7 +205,7 @@ const I18N = {
     usLabel: '🇺🇸 美国用户', globalLabel: '🌍 全球发货',
     btnAmazon: '亚马逊购买', tagAmazon: 'Prime 快递',
     btnTiktok: 'TikTok小店购买', tagTiktok: '专属优惠',
-    btnShopify: '前往HUOHULI官方网站购买', tagShopify: '全球发货',
+    btnShopify: '前往官方网站购买', tagShopify: '全球发货',
     footerNote: '链接将跳转至第三方平台',
     footerShip: '订单满$50免运费 · 30天无忧退换',
     headerBadge: 'TikTok 热门',
@@ -459,7 +459,7 @@ function renderCard(p) {
     +   '<div class="price-row"><span class="price">$' + p.price.toFixed(2) + '</span><span class="price-orig">$' + p.compareAt.toFixed(2) + '</span><span class="price-save">Save ' + save + '%</span></div>'
     +   '<div class="size-label">' + T.sizeChoose + '</div>'
     +   '<div class="size-picker">' + szBtns + '</div>'
-    +   '<div class="where-divider">🛍️ ' + T.whereLabel + '</div>'
+    +   '<div class="where-divider">🛒 ' + T.whereLabel + '</div>'
     +   '<div class="channels">'
     // US label
     +     '<div class="region-row"><span class="region-text us-text">' + T.usLabel + '</span></div>'
@@ -477,7 +477,7 @@ function renderCard(p) {
     +     '<div class="region-row"><span class="region-text global-text">' + T.globalLabel + '</span></div>'
     // Shopify
     +     '<a class="ch-btn btn-shopify" href="https://huohuli.myshopify.com/products/' + p.handle + '" target="_blank">'
-    +       '<svg viewBox="0 0 24 24" fill="white"><path d="M15.337 2.102a.563.563 0 00-.54-.486c-.237-.013-4.26-.08-4.26-.08s-2.833-2.754-3.116-3.038c-.09-.09-.21-.135-.336-.135l-.552 19.181 9.413 2.037 5.095-2.178L15.337 2.102z"/></svg>'
+    +       '<span style="font-size:1rem;line-height:1">🛍️</span>'
     +       '<span class="ch-label">' + T.btnShopify + '</span><span class="ch-tag">' + T.tagShopify + '</span>'
     +     '</a>'
     +   '</div>'

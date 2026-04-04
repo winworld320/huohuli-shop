@@ -328,8 +328,47 @@ function openChannel(platform, id, webUrl, productTitle) {
     product_id: id,
     product_name: productTitle || '',
   });
-  // 直接打开网页链接，App 唤起交给平台自己处理
-  window.open(webUrl, '_blank');
+
+  var appUrl = '';
+  if (platform === 'amazon') {
+    appUrl = 'amzn://products/' + id;
+  } else if (platform === 'tiktok') {
+    appUrl = 'snssdk1233://shop/product/' + id;
+  }
+
+  if (!appUrl) {
+    window.open(webUrl, '_blank');
+    return;
+  }
+
+  // 尝试唤起 App，2秒内页面没有失去焦点（说明 App 没唤起），则跳转网页
+  var didOpenApp = false;
+  var timer;
+
+  function onVisibilityChange() {
+    if (document.hidden || document.visibilityState === 'hidden') {
+      didOpenApp = true; // App 被唤起，页面切到后台
+      clearTimeout(timer);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    }
+  }
+
+  document.addEventListener('visibilitychange', onVisibilityChange);
+
+  // 用隐藏 iframe 触发 scheme，避免当前页跳走
+  var iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+  try { iframe.src = appUrl; } catch(e) {}
+
+  // 2秒后如果页面还在前台，说明没有 App，降级到网页
+  timer = setTimeout(function() {
+    document.removeEventListener('visibilitychange', onVisibilityChange);
+    document.body.removeChild(iframe);
+    if (!didOpenApp) {
+      window.open(webUrl, '_blank');
+    }
+  }, 2000);
 }
 
 // ══════════════════════════════════════════════

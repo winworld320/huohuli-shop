@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HUOHULI – Soft Pajamas Sets</title>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5J3RG9QE13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5J3RG9QE13');
+  </script>
   <meta name="description" content="HUOHULI Women's Pajamas Sets – Ultra-soft, S-4XL. Shop on Amazon, TikTok Shop, or Shopify." />
   <style>
     :root {
@@ -313,7 +321,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // ══════════════════════════════════════════════
 // Deep Link logic
 // ══════════════════════════════════════════════
-function openChannel(platform, id, webUrl) {
+function openChannel(platform, id, webUrl, productTitle) {
+  // GA4 事件追踪
+  gtag('event', 'channel_click', {
+    platform: platform,
+    product_id: id,
+    product_name: productTitle || '',
+  });
   if (platform === 'amazon') {
     window.location = 'com.amazon.mobile.shopping://www.amazon.com/dp/' + id;
     setTimeout(() => { window.location = 'amzn://products/' + id; }, 50);
@@ -475,19 +489,19 @@ function renderCard(p) {
     // US label
     +     '<div class="region-row"><span class="region-text us-text">' + T.usLabel + '</span></div>'
     // Amazon
-    +     '<button class="ch-btn btn-amazon" onclick="openChannel(\'amazon\',\'' + p.amazon_asin + '\',\'' + amazonUrl + '\')">'
+    +     '<button class="ch-btn btn-amazon" onclick="openChannel(\'amazon\',\'' + p.amazon_asin + '\',\'' + amazonUrl + '\',\'' + p.title + '\')">'
     +       '<svg viewBox="0 0 24 24" fill="#111"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.661.661 0 01-.77.074c-1.08-.896-1.274-1.31-1.868-2.164-1.787 1.823-3.052 2.369-5.368 2.369-2.741 0-4.878-1.691-4.878-5.076 0-2.643 1.431-4.441 3.471-5.32 1.768-.779 4.24-.918 6.13-1.132V6.07c0-.779.06-1.698-.396-2.373-.397-.602-1.158-.851-1.831-.851-1.243 0-2.352.638-2.624 1.96-.056.296-.274.589-.576.604l-3.22-.347c-.272-.061-.574-.281-.496-.698C5.268 1.994 8.056.7 10.565.7c1.284 0 2.96.341 3.971 1.31C15.791 3.113 15.73 4.7 15.73 6.431v5.765c0 1.733.719 2.495 1.396 3.432.238.332.29.731-.014.978l-1.968 1.189zm3.266 2.919C18.556 22.288 14.671 24 11.236 24 6.419 24 2.082 22.148.053 18.918c-.194-.307.024-.471.26-.313 2.263 1.313 4.875 2.104 7.66 2.104 2.088 0 4.386-.432 6.503-1.326.319-.135.587.208.334.431zM21.405 21.2c-.264-.338-1.747-.16-2.414-.08-.203.023-.234-.152-.051-.28 1.183-.832 3.12-.591 3.347-.313.228.28-.06 2.226-1.17 3.155-.17.143-.332.067-.257-.12.251-.625.807-2.025.545-2.362z"/></svg>'
     +       '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
     +     '</button>'
     // TikTok
-    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\')">'
+    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\',\'' + p.title + '\')">'
     +       '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
     +       '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
     +     '</button>'
     // Global label
     +     '<div class="region-row"><span class="region-text global-text">' + T.globalLabel + '</span></div>'
     // Shopify
-    +     '<a class="ch-btn btn-shopify" href="https://huohuli.myshopify.com/products/' + p.handle + '" target="_blank">'
+    +     '<a class="ch-btn btn-shopify" href="https://huohuli.myshopify.com/products/' + p.handle + '" target="_blank" onclick="gtag(\'event\',\'channel_click\',{platform:\'shopify\',product_name:\'' + p.title + '\'})">'
     +       '<span style="font-size:1rem;line-height:1">🛍️</span>'
     +       '<span class="ch-label">' + T.btnShopify + '</span><span class="ch-tag">' + T.tagShopify + '</span>'
     +     '</a>'

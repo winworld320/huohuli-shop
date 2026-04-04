@@ -78,31 +78,37 @@
     .where-divider{margin:0 0 8px;font-size:.72rem;font-weight:800;color:#555;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:6px}
     .where-divider::before,.where-divider::after{content:'';flex:1;height:1.5px;background:#ccc}
 
-    /* ── channel section ── */
-    .channels{display:flex;flex-direction:column;gap:6px}
+    /* ── channel section with 3D effects ── */
+    .channels{display:flex;flex-direction:column;gap:12px;padding:12px;background:rgba(255,245,247,.6);border-radius:12px;border:1px dashed var(--border);animation:gentle-float 4s ease-in-out infinite}
+    
+    @keyframes gentle-float {
+      0%,100% {transform: translateY(0)}
+      50% {transform: translateY(-3px)}
+    }
 
-    .region-row{display:flex;align-items:center;justify-content:center;padding:5px 0 3px}
-    .region-text{font-size:.7rem;font-weight:700;letter-spacing:.3px;text-align:center}
-    .us-text{color:#3a6fd8}
-    .global-text{color:#2a9d55}
-
-    .ch-btn{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:9px;font-size:.8rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:filter .18s,transform .1s;width:100%}
-    .ch-btn:active{transform:scale(.97)}
-    .ch-btn svg{width:15px;height:15px;flex-shrink:0}
+    .ch-btn{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:10px;font-size:.85rem;font-weight:800;text-decoration:none;border:none;cursor:pointer;transition:all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);width:100%;position:relative;top:0}
+    .ch-btn svg{width:18px;height:18px;flex-shrink:0}
     .ch-label{flex:1;text-align:left}
-    .ch-tag{font-size:.6rem;font-weight:700;border-radius:4px;padding:2px 5px;white-space:nowrap;opacity:.85}
 
-    .btn-amazon{background:var(--amazon);color:#111}
-    .btn-amazon:hover{filter:brightness(1.1)}
-    .btn-amazon .ch-tag{background:rgba(0,0,0,.12);color:#333}
+    .btn-amazon{background:var(--amazon);color:#111;box-shadow:0 4px 0 #cc7a00}
+    .btn-amazon:hover{top:-2px;box-shadow:0 6px 0 #cc7a00;filter:brightness(1.05)}
+    .btn-amazon:active{top:2px;box-shadow:0 1px 0 #cc7a00}
 
-    .btn-tiktok{background:#111;color:#fff;border:1px solid #2a2a2a}
-    .btn-tiktok:hover{filter:brightness(1.5)}
-    .btn-tiktok .ch-tag{background:rgba(255,255,255,.25);color:#fff}
+    .btn-tiktok{background:#111;color:#fff;border:1px solid #2a2a2a;box-shadow:0 4px 0 #000}
+    .btn-tiktok:hover{top:-2px;box-shadow:0 6px 0 #000;filter:brightness(1.5)}
+    .btn-tiktok:active{top:2px;box-shadow:0 1px 0 #000}
 
-    .btn-shopify{background:var(--shopify);color:#fff}
-    .btn-shopify:hover{filter:brightness(1.12)}
-    .btn-shopify .ch-tag{background:rgba(255,255,255,.18);color:#fff}
+    .btn-shopify{background:var(--shopify);color:#fff;box-shadow:0 4px 0 #719136}
+    .btn-shopify:hover{top:-2px;box-shadow:0 6px 0 #719136;filter:brightness(1.1)}
+    .btn-shopify:active{top:2px;box-shadow:0 1px 0 #719136}
+
+    /* Mobile overrides */
+    @media(max-width:600px){
+      .channels{gap:8px;padding:8px}
+      .ch-btn{padding:10px 10px;font-size:.78rem}
+      .ch-btn svg{display:none}
+      .ch-label{text-align:center} /* center on mobile for cleaner look */
+    }
 
     footer{text-align:center;border-top:1px solid var(--border);padding:28px 20px;font-size:.76rem;color:var(--dim)}
     footer p+p{margin-top:6px}

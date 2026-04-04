@@ -341,34 +341,30 @@ function openChannel(platform, id, webUrl, productTitle) {
     return;
   }
 
-  // 尝试唤起 App，2秒内页面没有失去焦点（说明 App 没唤起），则跳转网页
-  var didOpenApp = false;
-  var timer;
-
-  function onVisibilityChange() {
-    if (document.hidden || document.visibilityState === 'hidden') {
-      didOpenApp = true; // App 被唤起，页面切到后台
-      clearTimeout(timer);
-      document.removeEventListener('visibilitychange', onVisibilityChange);
-    }
+  // 关键：在用户手势内立即打开新标签，写入跳转页面
+  // 新标签先跳 App Scheme，1秒后如果还在页面，自动降级到网页
+  var newTab = window.open('', '_blank');
+  if (!newTab) {
+    // 弹窗被拦截（极少情况），直接当前页跳
+    window.location.href = appUrl;
+    setTimeout(function(){ window.location.href = webUrl; }, 1000);
+    return;
   }
 
-  document.addEventListener('visibilitychange', onVisibilityChange);
-
-  // 用隐藏 iframe 触发 scheme，避免当前页跳走
-  var iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-  try { iframe.src = appUrl; } catch(e) {}
-
-  // 2秒后如果页面还在前台，说明没有 App，降级到网页
-  timer = setTimeout(function() {
-    document.removeEventListener('visibilitychange', onVisibilityChange);
-    document.body.removeChild(iframe);
-    if (!didOpenApp) {
-      window.open(webUrl, '_blank');
-    }
-  }, 1000);
+  newTab.document.write(
+    '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+    '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<title>Redirecting...</title>' +
+    '<style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#fff5f7;flex-direction:column;gap:12px}' +
+    'p{color:#999;font-size:.9rem}a{color:#d65d0e;font-size:.85rem}</style></head>' +
+    '<body><p>Opening app...</p>' +
+    '<a href="' + webUrl + '">Click here if not redirected</a>' +
+    '<script>' +
+    'window.location.href = "' + appUrl + '";' +
+    'setTimeout(function(){ window.location.href = "' + webUrl + '"; }, 1000);' +
+    '<\/script></body></html>'
+  );
+  newTab.document.close();
 }
 
 // ══════════════════════════════════════════════

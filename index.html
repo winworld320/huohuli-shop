@@ -332,13 +332,6 @@ function openChannel(platform, id, webUrl, productTitle) {
   var ua = navigator.userAgent || '';
   var isTikTokBrowser = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
   var isWechat = /MicroMessenger/i.test(ua);
-  var isInAppBrowser = isTikTokBrowser || isWechat;
-
-  // TikTok / 微信内置浏览器：无法跳 App，直接跳网页
-  if (isInAppBrowser) {
-    window.location.href = webUrl;
-    return;
-  }
 
   var appUrl = '';
   if (platform === 'amazon') {
@@ -348,13 +341,21 @@ function openChannel(platform, id, webUrl, productTitle) {
   }
 
   if (!appUrl) {
-    window.open(webUrl, '_blank');
+    window.location.href = webUrl;
+    return;
+  }
+
+  // TikTok 内置浏览器：直接 location.href 跳 scheme，1秒后降级网页
+  if (isTikTokBrowser || isWechat) {
+    window.location.href = appUrl;
+    setTimeout(function(){ window.location.href = webUrl; }, 1000);
     return;
   }
 
   // 普通浏览器：新标签先跳 App Scheme，1秒后降级网页
   var newTab = window.open('', '_blank');
   if (!newTab) {
+    // 弹窗被拦截，回退到当前页跳转
     window.location.href = appUrl;
     setTimeout(function(){ window.location.href = webUrl; }, 1000);
     return;

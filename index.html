@@ -329,6 +329,17 @@ function openChannel(platform, id, webUrl, productTitle) {
     product_name: productTitle || '',
   });
 
+  var ua = navigator.userAgent || '';
+  var isTikTokBrowser = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
+  var isWechat = /MicroMessenger/i.test(ua);
+  var isInAppBrowser = isTikTokBrowser || isWechat;
+
+  // TikTok / 微信内置浏览器：无法跳 App，直接跳网页
+  if (isInAppBrowser) {
+    window.location.href = webUrl;
+    return;
+  }
+
   var appUrl = '';
   if (platform === 'amazon') {
     appUrl = 'amzn://products/' + id;
@@ -341,11 +352,9 @@ function openChannel(platform, id, webUrl, productTitle) {
     return;
   }
 
-  // 关键：在用户手势内立即打开新标签，写入跳转页面
-  // 新标签先跳 App Scheme，1秒后如果还在页面，自动降级到网页
+  // 普通浏览器：新标签先跳 App Scheme，1秒后降级网页
   var newTab = window.open('', '_blank');
   if (!newTab) {
-    // 弹窗被拦截（极少情况），直接当前页跳
     window.location.href = appUrl;
     setTimeout(function(){ window.location.href = webUrl; }, 1000);
     return;

@@ -328,13 +328,8 @@ function openChannel(platform, id, webUrl, productTitle) {
     product_id: id,
     product_name: productTitle || '',
   });
-  if (platform === 'amazon') {
-    window.location = 'com.amazon.mobile.shopping://www.amazon.com/dp/' + id;
-    setTimeout(() => { window.location = 'amzn://products/' + id; }, 50);
-  } else if (platform === 'tiktok') {
-    window.location = 'snssdk1233://shop/product/' + id;
-  }
-  setTimeout(() => { window.location = webUrl; }, 1500);
+  // 直接打开网页链接，App 唤起交给平台自己处理
+  window.open(webUrl, '_blank');
 }
 
 // ══════════════════════════════════════════════

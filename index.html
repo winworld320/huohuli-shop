@@ -335,7 +335,13 @@ function openChannel(platform, id, webUrl, productTitle) {
 
   var appUrl = '';
   if (platform === 'amazon') {
-    appUrl = 'amzn://products/' + id;
+    // iOS 用 com.amazon.mobile.shopping.web://，Android 用 intent: 方式
+    var isAndroid = /android/i.test(ua);
+    if (isAndroid) {
+      appUrl = 'intent://www.amazon.com/dp/' + id + '#Intent;package=com.amazon.mShop.android.shopping;scheme=https;end';
+    } else {
+      appUrl = 'com.amazon.mobile.shopping.web://amazon.com/dp/' + id;
+    }
   } else if (platform === 'tiktok') {
     appUrl = 'snssdk1233://shop/product/' + id;
   }

@@ -24,9 +24,9 @@
     html{scroll-behavior:smooth}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-    header{position:sticky;top:0;z-index:50;background:rgba(255,245,247,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:68px}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,245,247,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:104px}
     .logo{display:flex;align-items:center;text-decoration:none}
-    .logo img{height:44px;width:auto;display:block}
+    .logo img{height:88px;width:auto;display:block}
     .header-badge{font-size:.72rem;background:rgba(214,93,14,.15);border:1px solid rgba(214,93,14,.3);color:var(--brand);border-radius:20px;padding:3px 10px;font-weight:600;letter-spacing:.5px}
 
     .hero{text-align:center;padding:56px 24px 40px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(214,93,14,.08) 0%,transparent 70%)}
@@ -74,6 +74,9 @@
     .price{font-size:1.35rem;font-weight:900;color:var(--brand-light)}
     .price-orig{font-size:.84rem;color:var(--dim);text-decoration:line-through}
     .price-save{font-size:.68rem;background:rgba(201,120,58,.15);color:var(--brand-light);border-radius:4px;padding:2px 6px;font-weight:700}
+    .coupon-bar{display:flex;align-items:center;gap:7px;background:linear-gradient(90deg,#fff8f0,#fff3e0);border:1.5px dashed #f5a623;border-radius:8px;padding:7px 11px;margin-bottom:10px;font-size:.78rem;color:#b85c00;font-weight:700}
+    .coupon-bar .coupon-code{background:#ff6b00;color:#fff;border-radius:5px;padding:2px 8px;font-size:.76rem;font-weight:900;letter-spacing:1px;font-family:monospace}
+    .coupon-bar .coupon-off{font-size:.82rem;color:#d65d0e}
     .size-label{font-size:.72rem;color:var(--muted);margin-bottom:5px;font-weight:600}
     .size-picker{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
     .sz{border:1px solid var(--border);background:transparent;color:var(--text);border-radius:7px;padding:4px 9px;font-size:.75rem;cursor:pointer;font-weight:600;transition:all .15s}
@@ -201,6 +204,7 @@ const I18N = {
     heroDesc: 'Ultra-soft 95% polyester blend. Sizes S–4XL. Free shipping on orders over $50.',
     chipWash: 'Machine Washable', chipReturn: 'Free Returns',
     t1:'Secure Checkout', t2:'Free Shipping $50+', t3:'30-Day Returns', t4:'Fast Dispatch',
+    couponText: 'Coupon: extra 29% OFF · Code:',
     sizeChoose: 'Size: choose one', sizeSelected: 'Size:',
     whereLabel: 'Where to buy',
     usLabel: '🇺🇸 US Customers', globalLabel: '🌍 Worldwide',
@@ -216,6 +220,7 @@ const I18N = {
     heroDesc: '95%聚酯纤维，超柔亲肤。尺码 S–4XL，订单满$50免运费，选择你喜欢的购买方式。',
     chipWash: '可机洗', chipReturn: '免费退换',
     t1:'安全结账', t2:'满$50免运费', t3:'30天退换', t4:'快速发货',
+    couponText: '优惠券：额外29折 · 码:',
     sizeChoose: '尺码：请选择', sizeSelected: '尺码：',
     whereLabel: '选择购买渠道',
     usLabel: '🇺🇸 美国用户', globalLabel: '🌍 全球发货',
@@ -231,6 +236,7 @@ const I18N = {
     heroDesc: '95%ポリエステル素材、サイズS〜4XL。$50以上で送料無料。',
     chipWash: '洗濯機洗い可', chipReturn: '無料返品',
     t1:'安全なチェックアウト', t2:'$50以上送料無料', t3:'30日間返品', t4:'迅速な発送',
+    couponText: 'クーポン：追加29%OFF · コード:',
     sizeChoose: 'サイズ：選んでください', sizeSelected: 'サイズ：',
     whereLabel: '購入先を選ぶ',
     usLabel: '🇺🇸 米国のお客様', globalLabel: '🌍 全世界配送',
@@ -246,6 +252,7 @@ const I18N = {
     heroDesc: '95% Polyester, Größen S–4XL. Kostenloser Versand ab $50.',
     chipWash: 'Maschinenwaschbar', chipReturn: 'Kostenlose Rücksendung',
     t1:'Sicherer Checkout', t2:'Versand ab $50 gratis', t3:'30 Tage Rückgabe', t4:'Schneller Versand',
+    couponText: 'Gutschein: 29% extra · Code:',
     sizeChoose: 'Größe: auswählen', sizeSelected: 'Größe:',
     whereLabel: 'Wo kaufen',
     usLabel: '🇺🇸 US-Kunden', globalLabel: '🌍 Weltweiter Versand',
@@ -261,6 +268,7 @@ const I18N = {
     heroDesc: '95% polyester doux. Tailles S–4XL. Livraison gratuite dès $50.',
     chipWash: 'Lavable en machine', chipReturn: 'Retours gratuits',
     t1:'Paiement sécurisé', t2:'Livraison gratuite dès $50', t3:'Retours 30 jours', t4:'Expédition rapide',
+    couponText: 'Coupon : 29% de remise · Code :',
     sizeChoose: 'Taille : choisir', sizeSelected: 'Taille :',
     whereLabel: 'Où acheter',
     usLabel: '🇺🇸 Clients US', globalLabel: '🌍 Livraison mondiale',
@@ -276,6 +284,7 @@ const I18N = {
     heroDesc: '95% poliéster suave. Tallas S–4XL. Envío gratis en pedidos de más de $50.',
     chipWash: 'Lavable a máquina', chipReturn: 'Devoluciones gratis',
     t1:'Pago seguro', t2:'Envío gratis desde $50', t3:'Devoluciones 30 días', t4:'Envío rápido',
+    couponText: 'Cupón: 29% extra · Código:',
     sizeChoose: 'Talla: elige una', sizeSelected: 'Talla:',
     whereLabel: 'Dónde comprar',
     usLabel: '🇺🇸 Clientes de EE. UU.', globalLabel: '🌍 Envío mundial',
@@ -535,7 +544,94 @@ function renderCard(p) {
     + '<div class="card-right">'
     +   '<div class="card-title">' + p.title + '</div>'
     +   '<div class="card-meta">' + p.neckline + ' · 2-Piece Set · S\u20134XL</div>'
-    +   '<div class="price-row"><span class="price">$' + p.price.toFixed(2) + '</span><span class="price-orig">$' + p.compareAt.toFixed(2) + '</span><span class="price-save">Save ' + save + '%</span></div>'
+    +   '<div class="price-row"><span class="price">
+    +   '<div class="size-picker">' + szBtns + '</div>'
+    +   '<div class="where-divider">🛒 ' + T.whereLabel + '</div>'
+    +   '<div class="channels">'
+    // US label
+    +     '<div class="region-row"><span class="region-text us-text">' + T.usLabel + '</span></div>'
+    // Amazon
+    +     '<button class="ch-btn btn-amazon" onclick="openChannel(\'amazon\',\'' + p.amazon_asin + '\',\'' + amazonUrl + '\',\'' + p.color + '-' + p.neckline + '\')">'
+    +       '<svg viewBox="0 0 24 24" fill="#111"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.661.661 0 01-.77.074c-1.08-.896-1.274-1.31-1.868-2.164-1.787 1.823-3.052 2.369-5.368 2.369-2.741 0-4.878-1.691-4.878-5.076 0-2.643 1.431-4.441 3.471-5.32 1.768-.779 4.24-.918 6.13-1.132V6.07c0-.779.06-1.698-.396-2.373-.397-.602-1.158-.851-1.831-.851-1.243 0-2.352.638-2.624 1.96-.056.296-.274.589-.576.604l-3.22-.347c-.272-.061-.574-.281-.496-.698C5.268 1.994 8.056.7 10.565.7c1.284 0 2.96.341 3.971 1.31C15.791 3.113 15.73 4.7 15.73 6.431v5.765c0 1.733.719 2.495 1.396 3.432.238.332.29.731-.014.978l-1.968 1.189zm3.266 2.919C18.556 22.288 14.671 24 11.236 24 6.419 24 2.082 22.148.053 18.918c-.194-.307.024-.471.26-.313 2.263 1.313 4.875 2.104 7.66 2.104 2.088 0 4.386-.432 6.503-1.326.319-.135.587.208.334.431zM21.405 21.2c-.264-.338-1.747-.16-2.414-.08-.203.023-.234-.152-.051-.28 1.183-.832 3.12-.591 3.347-.313.228.28-.06 2.226-1.17 3.155-.17.143-.332.067-.257-.12.251-.625.807-2.025.545-2.362z"/></svg>'
+    +       '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
+    +     '</button>'
+    // TikTok
+    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\',\'' + p.color + '-' + p.neckline + '\')">'
+    +       '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
+    +       '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
+    +     '</button>'
+    // Global label
+    +     '<div class="region-row"><span class="region-text global-text">' + T.globalLabel + '</span></div>'
+    // Shopify
+    +     '<a class="ch-btn btn-shopify" href="https://huohuli.myshopify.com/products/' + p.handle + '" target="_blank" onclick="gtag(\'event\',\'channel_click\',{platform:\'shopify\',product_name:\'' + p.color + '-' + p.neckline + '\'})">'
+    +       '<span style="font-size:1rem;line-height:1">🛍️</span>'
+    +       '<span class="ch-label">' + T.btnShopify + '</span><span class="ch-tag">' + T.tagShopify + '</span>'
+    +     '</a>'
+    +   '</div>'
+    + '</div>'
+    + '</div>';
+}
+
+let currentFilter = 'all';
+function filterColor(btn) {
+  currentFilter = btn.dataset.color;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+function renderGrid() {
+  const filtered = currentFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.color === currentFilter);
+  document.getElementById('productGrid').innerHTML = filtered.map(renderCard).join('');
+}
+renderGrid();
+</script>
+</body>
+</html>
+ + p.price.toFixed(2) + '</span><span class="price-orig">
+    +   '<div class="size-picker">' + szBtns + '</div>'
+    +   '<div class="where-divider">🛒 ' + T.whereLabel + '</div>'
+    +   '<div class="channels">'
+    // US label
+    +     '<div class="region-row"><span class="region-text us-text">' + T.usLabel + '</span></div>'
+    // Amazon
+    +     '<button class="ch-btn btn-amazon" onclick="openChannel(\'amazon\',\'' + p.amazon_asin + '\',\'' + amazonUrl + '\',\'' + p.color + '-' + p.neckline + '\')">'
+    +       '<svg viewBox="0 0 24 24" fill="#111"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.661.661 0 01-.77.074c-1.08-.896-1.274-1.31-1.868-2.164-1.787 1.823-3.052 2.369-5.368 2.369-2.741 0-4.878-1.691-4.878-5.076 0-2.643 1.431-4.441 3.471-5.32 1.768-.779 4.24-.918 6.13-1.132V6.07c0-.779.06-1.698-.396-2.373-.397-.602-1.158-.851-1.831-.851-1.243 0-2.352.638-2.624 1.96-.056.296-.274.589-.576.604l-3.22-.347c-.272-.061-.574-.281-.496-.698C5.268 1.994 8.056.7 10.565.7c1.284 0 2.96.341 3.971 1.31C15.791 3.113 15.73 4.7 15.73 6.431v5.765c0 1.733.719 2.495 1.396 3.432.238.332.29.731-.014.978l-1.968 1.189zm3.266 2.919C18.556 22.288 14.671 24 11.236 24 6.419 24 2.082 22.148.053 18.918c-.194-.307.024-.471.26-.313 2.263 1.313 4.875 2.104 7.66 2.104 2.088 0 4.386-.432 6.503-1.326.319-.135.587.208.334.431zM21.405 21.2c-.264-.338-1.747-.16-2.414-.08-.203.023-.234-.152-.051-.28 1.183-.832 3.12-.591 3.347-.313.228.28-.06 2.226-1.17 3.155-.17.143-.332.067-.257-.12.251-.625.807-2.025.545-2.362z"/></svg>'
+    +       '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
+    +     '</button>'
+    // TikTok
+    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\',\'' + p.color + '-' + p.neckline + '\')">'
+    +       '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
+    +       '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
+    +     '</button>'
+    // Global label
+    +     '<div class="region-row"><span class="region-text global-text">' + T.globalLabel + '</span></div>'
+    // Shopify
+    +     '<a class="ch-btn btn-shopify" href="https://huohuli.myshopify.com/products/' + p.handle + '" target="_blank" onclick="gtag(\'event\',\'channel_click\',{platform:\'shopify\',product_name:\'' + p.color + '-' + p.neckline + '\'})">'
+    +       '<span style="font-size:1rem;line-height:1">🛍️</span>'
+    +       '<span class="ch-label">' + T.btnShopify + '</span><span class="ch-tag">' + T.tagShopify + '</span>'
+    +     '</a>'
+    +   '</div>'
+    + '</div>'
+    + '</div>';
+}
+
+let currentFilter = 'all';
+function filterColor(btn) {
+  currentFilter = btn.dataset.color;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+function renderGrid() {
+  const filtered = currentFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.color === currentFilter);
+  document.getElementById('productGrid').innerHTML = filtered.map(renderCard).join('');
+}
+renderGrid();
+</script>
+</body>
+</html>
+ + p.compareAt.toFixed(2) + '</span><span class="price-save">Save ' + save + '%</span></div>'
+    +   '<div class="coupon-bar">\uD83C\uDF9F\uFE0F <span>' + T.couponText + '</span> <span class="coupon-code">7TY35TAK</span> <span class="coupon-off">\u2192 29% OFF</span></div>'
     +   '<div class="size-label">' + T.sizeChoose + '</div>'
     +   '<div class="size-picker">' + szBtns + '</div>'
     +   '<div class="where-divider">🛒 ' + T.whereLabel + '</div>'

@@ -28,14 +28,6 @@
     .logo{display:flex;align-items:center;text-decoration:none}
     .logo img{height:66px;width:auto;display:block}
     .header-badge{font-size:.72rem;background:rgba(214,93,14,.15);border:1px solid rgba(214,93,14,.3);color:var(--brand);border-radius:20px;padding:3px 10px;font-weight:600;letter-spacing:.5px}
-
-    .hero{text-align:center;padding:56px 24px 40px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(214,93,14,.08) 0%,transparent 70%)}
-    .tiktok-pill{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.72rem;color:#000;font-weight:700;letter-spacing:.5px;margin-bottom:22px}
-    .tiktok-pill svg{width:13px;height:13px;fill:#000}
-    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.12;max-width:600px;margin:0 auto 14px}
-    .hero h1 em{font-style:normal;color:var(--brand-light)}
-    .hero p{color:var(--muted);font-size:1rem;max-width:500px;margin:0 auto 28px;line-height:1.65}
-    .hero-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
     .chip{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--muted)}
 
     .trust{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 24px;margin:36px 0 0;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;align-items:center}
@@ -141,7 +133,6 @@
       .where-divider{font-size:.62rem}
       .ch-btn{padding:7px 9px;font-size:.72rem}
       .ch-tag{font-size:.57rem}
-      .hero h1{font-size:1.9rem}
     }
   </style>
 </head>
@@ -154,20 +145,6 @@
   <div class="header-badge" id="headerBadge">As Seen on TikTok</div>
 </header>
 
-<section class="hero">
-  <div class="tiktok-pill">
-    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>
-    Trending on TikTok
-  </div>
-  <h1 id="heroTitle">Cloud-Soft Pajamas<br/><em>Pick Your Size, Pick Your Store</em></h1>
-  <p id="heroDesc">Ultra-soft 95% polyester blend. Sizes S–4XL. Free shipping on orders over $50. Choose how you'd like to buy.</p>
-  <div class="hero-chips">
-    <span class="chip">95% Polyester · 5% Spandex</span>
-    <span class="chip">S · M · L · XL · 2XL · 3XL · 4XL</span>
-    <span class="chip" id="chipWash">Machine Washable</span>
-    <span class="chip" id="chipReturn">Free Returns</span>
-  </div>
-</section>
 
 <div class="trust">
   <div class="trust-item"><span>🔒</span> <span id="t1">Secure Checkout</span></div>
@@ -196,9 +173,6 @@
 // ══════════════════════════════════════════════
 const I18N = {
   en: {
-    heroTitle: 'Cloud-Soft Pajamas<br/><em>Pick Your Size, Pick Your Store</em>',
-    heroDesc: 'Ultra-soft 95% polyester blend. Sizes S–4XL. Free shipping on orders over $50.',
-    chipWash: 'Machine Washable', chipReturn: 'Free Returns',
     t1:'Secure Checkout', t2:'Free Shipping $50+', t3:'30-Day Returns', t4:'Fast Dispatch',
     couponText: 'Coupon: extra 29% OFF · Code:',
     sizeChoose: 'Size: choose one', sizeSelected: 'Size:',
@@ -212,9 +186,6 @@ const I18N = {
     headerBadge: 'As Seen on TikTok',
   },
   zh: {
-    heroTitle: '超柔睡衣套装<br/><em>选尺码，选平台</em>',
-    heroDesc: '95%聚酯纤维，超柔亲肤。尺码 S–4XL，订单满$50免运费，选择你喜欢的购买方式。',
-    chipWash: '可机洗', chipReturn: '免费退换',
     t1:'安全结账', t2:'满$50免运费', t3:'30天退换', t4:'快速发货',
     couponText: '优惠券：额外29折 · 码:',
     sizeChoose: '尺码：请选择', sizeSelected: '尺码：',
@@ -228,9 +199,6 @@ const I18N = {
     headerBadge: 'TikTok 热门',
   },
   ja: {
-    heroTitle: '超やわらかパジャマセット<br/><em>サイズとショップをお選びください</em>',
-    heroDesc: '95%ポリエステル素材、サイズS〜4XL。$50以上で送料無料。',
-    chipWash: '洗濯機洗い可', chipReturn: '無料返品',
     t1:'安全なチェックアウト', t2:'$50以上送料無料', t3:'30日間返品', t4:'迅速な発送',
     couponText: 'クーポン：追加29%OFF · コード:',
     sizeChoose: 'サイズ：選んでください', sizeSelected: 'サイズ：',
@@ -244,9 +212,6 @@ const I18N = {
     headerBadge: 'TikTokで話題',
   },
   de: {
-    heroTitle: 'Ultraweicher Schlafanzug<br/><em>Wähle Größe und Shop</em>',
-    heroDesc: '95% Polyester, Größen S–4XL. Kostenloser Versand ab $50.',
-    chipWash: 'Maschinenwaschbar', chipReturn: 'Kostenlose Rücksendung',
     t1:'Sicherer Checkout', t2:'Versand ab $50 gratis', t3:'30 Tage Rückgabe', t4:'Schneller Versand',
     couponText: 'Gutschein: 29% extra · Code:',
     sizeChoose: 'Größe: auswählen', sizeSelected: 'Größe:',
@@ -260,9 +225,6 @@ const I18N = {
     headerBadge: 'TikTok-Trend',
   },
   fr: {
-    heroTitle: 'Pyjamas ultra-doux<br/><em>Choisissez votre taille et votre boutique</em>',
-    heroDesc: '95% polyester doux. Tailles S–4XL. Livraison gratuite dès $50.',
-    chipWash: 'Lavable en machine', chipReturn: 'Retours gratuits',
     t1:'Paiement sécurisé', t2:'Livraison gratuite dès $50', t3:'Retours 30 jours', t4:'Expédition rapide',
     couponText: 'Coupon : 29% de remise · Code :',
     sizeChoose: 'Taille : choisir', sizeSelected: 'Taille :',
@@ -276,9 +238,6 @@ const I18N = {
     headerBadge: 'Tendance TikTok',
   },
   es: {
-    heroTitle: 'Pijamas ultrasuaves<br/><em>Elige tu talla y tu tienda</em>',
-    heroDesc: '95% poliéster suave. Tallas S–4XL. Envío gratis en pedidos de más de $50.',
-    chipWash: 'Lavable a máquina', chipReturn: 'Devoluciones gratis',
     t1:'Pago seguro', t2:'Envío gratis desde $50', t3:'Devoluciones 30 días', t4:'Envío rápido',
     couponText: 'Cupón: 29% extra · Código:',
     sizeChoose: 'Talla: elige una', sizeSelected: 'Talla:',
@@ -307,10 +266,6 @@ const lang = detectLang();
 const T = I18N[lang] || I18N.en;
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('heroTitle').innerHTML = T.heroTitle;
-  document.getElementById('heroDesc').textContent = T.heroDesc;
-  document.getElementById('chipWash').textContent = T.chipWash;
-  document.getElementById('chipReturn').textContent = T.chipReturn;
   document.getElementById('t1').textContent = T.t1;
   document.getElementById('t2').textContent = T.t2;
   document.getElementById('t3').textContent = T.t3;

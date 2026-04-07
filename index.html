@@ -358,13 +358,11 @@ function openChannel(platform, id, webUrl, productTitle) {
     return;
   }
 
-  // TikTok / 微信内置浏览器：直接 location.href 跳 App Scheme
-  // 1.5秒后如果没跳走就降级到网页
+  // TikTok / 微信内置浏览器：
+  // 恢复到最原始的跳转方式：直接尝试唤起，不做任何自动降级，避免干扰系统弹窗
   if (isTikTokBrowser || isWechat) {
     window.location.href = appUrl;
-    setTimeout(function(){
-      window.location.href = webUrl;
-    }, 1500);
+    // 如果唤起失败，用户还在本页，可以再次点击或手动跳转
     return;
   }
 

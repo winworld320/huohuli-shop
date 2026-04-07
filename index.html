@@ -30,8 +30,6 @@
     .header-badge{font-size:.72rem;background:rgba(214,93,14,.15);border:1px solid rgba(214,93,14,.3);color:var(--brand);border-radius:20px;padding:3px 10px;font-weight:600;letter-spacing:.5px}
     .chip{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--muted)}
 
-    .trust{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 24px;margin:36px 0 0;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;align-items:center}
-    .trust-item{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:6px}
 
     .filter-bar{display:flex;gap:8px;flex-wrap:wrap;padding:28px 20px 0;max-width:900px;margin:0 auto}
     .filter-btn{padding:6px 16px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:.8rem;cursor:pointer;font-weight:600;transition:all .18s}
@@ -146,11 +144,6 @@
 </header>
 
 
-<div class="trust">
-  <div class="trust-item"><span>🔒</span> <span id="t1">Secure Checkout</span></div>
-  <div class="trust-item"><span>🚚</span> <span id="t2">Free Shipping $50+</span></div>
-  <div class="trust-item"><span>↩️</span> <span id="t3">30-Day Returns</span></div>
-  <div class="trust-item"><span>📦</span> <span id="t4">Fast Dispatch</span></div>
 </div>
 
 <div class="filter-bar" id="filterBar">
@@ -173,7 +166,6 @@
 // ══════════════════════════════════════════════
 const I18N = {
   en: {
-    t1:'Secure Checkout', t2:'Free Shipping $50+', t3:'30-Day Returns', t4:'Fast Dispatch',
     couponText: 'Coupon: extra 29% OFF · Code:',
     sizeChoose: 'Size: choose one', sizeSelected: 'Size:',
     whereLabel: 'Where to buy',
@@ -186,7 +178,6 @@ const I18N = {
     headerBadge: 'As Seen on TikTok',
   },
   zh: {
-    t1:'安全结账', t2:'满$50免运费', t3:'30天退换', t4:'快速发货',
     couponText: '优惠券：额外29折 · 码:',
     sizeChoose: '尺码：请选择', sizeSelected: '尺码：',
     whereLabel: '选择购买渠道',
@@ -199,7 +190,6 @@ const I18N = {
     headerBadge: 'TikTok 热门',
   },
   ja: {
-    t1:'安全なチェックアウト', t2:'$50以上送料無料', t3:'30日間返品', t4:'迅速な発送',
     couponText: 'クーポン：追加29%OFF · コード:',
     sizeChoose: 'サイズ：選んでください', sizeSelected: 'サイズ：',
     whereLabel: '購入先を選ぶ',
@@ -212,7 +202,6 @@ const I18N = {
     headerBadge: 'TikTokで話題',
   },
   de: {
-    t1:'Sicherer Checkout', t2:'Versand ab $50 gratis', t3:'30 Tage Rückgabe', t4:'Schneller Versand',
     couponText: 'Gutschein: 29% extra · Code:',
     sizeChoose: 'Größe: auswählen', sizeSelected: 'Größe:',
     whereLabel: 'Wo kaufen',
@@ -225,7 +214,6 @@ const I18N = {
     headerBadge: 'TikTok-Trend',
   },
   fr: {
-    t1:'Paiement sécurisé', t2:'Livraison gratuite dès $50', t3:'Retours 30 jours', t4:'Expédition rapide',
     couponText: 'Coupon : 29% de remise · Code :',
     sizeChoose: 'Taille : choisir', sizeSelected: 'Taille :',
     whereLabel: 'Où acheter',
@@ -238,7 +226,6 @@ const I18N = {
     headerBadge: 'Tendance TikTok',
   },
   es: {
-    t1:'Pago seguro', t2:'Envío gratis desde $50', t3:'Devoluciones 30 días', t4:'Envío rápido',
     couponText: 'Cupón: 29% extra · Código:',
     sizeChoose: 'Talla: elige una', sizeSelected: 'Talla:',
     whereLabel: 'Dónde comprar',

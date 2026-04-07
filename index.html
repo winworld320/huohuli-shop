@@ -358,16 +358,28 @@ function openChannel(platform, id, webUrl, productTitle) {
     return;
   }
 
-  // TikTok / 微信内置浏览器：用隐藏 iframe 触发 scheme，避免 location.href 被拦截
+  // TikTok / 微信内置浏览器：TikTok 屏蔽自动唤起 App，必须用户手动点击
+  // 显示一个中间弹窗，用户点按钮后触发 App Scheme
   if (isTikTokBrowser || isWechat) {
-    var ifr = document.createElement('iframe');
-    ifr.style.cssText = 'display:none;width:0;height:0;border:0';
-    ifr.src = appUrl;
-    document.body.appendChild(ifr);
-    setTimeout(function(){
-      document.body.removeChild(ifr);
-      window.location.href = webUrl;
-    }, 1500);
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center';
+    var box = document.createElement('div');
+    box.style.cssText = 'background:#fff;border-radius:18px;padding:32px 28px;max-width:320px;width:90%;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.25)';
+    var appName = platform === 'amazon' ? 'Amazon' : 'TikTok';
+    var appColor = platform === 'amazon' ? '#ff9900' : '#111';
+    var appIcon = platform === 'amazon' ? '🛒' : '🎵';
+    box.innerHTML = '<div style="font-size:2.5rem;margin-bottom:12px">' + appIcon + '</div>'
+      + '<div style="font-size:1.05rem;font-weight:700;color:#222;margin-bottom:8px">Open in ' + appName + ' App</div>'
+      + '<div style="font-size:.82rem;color:#888;margin-bottom:22px;line-height:1.5">Tap the button below to open the ' + appName + ' app directly</div>'
+      + '<a id="deep-link-btn" href="' + appUrl + '" style="display:block;background:' + appColor + ';color:#fff;text-decoration:none;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:800;margin-bottom:12px">Open ' + appName + ' App</a>'
+      + '<a href="' + webUrl + '" style="display:block;color:#999;font-size:.8rem;text-decoration:none;padding:8px">Continue in browser instead →</a>';
+    overlay.appendChild(box);
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) document.body.removeChild(overlay); });
+    document.body.appendChild(overlay);
+    // 用户点"Open App"后，2秒后如果没离开就自动降级网页
+    document.getElementById('deep-link-btn').addEventListener('click', function(e){
+      setTimeout(function(){ window.location.href = webUrl; }, 2000);
+    });
     return;
   }
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -349,7 +349,8 @@ function openChannel(platform, id, webUrl, productTitle) {
       appUrl = 'com.amazon.mobile.shopping.web://amazon.com/dp/' + id;
     }
   } else if (platform === 'tiktok') {
-    appUrl = 'snssdk1233://shop/product/' + id;
+    appUrl = 'snssdk1233://webcast/room/';
+    webUrl = 'https://www.tiktok.com/t/ZT983eLkjKUoD-DbDy4/';
   }
 
   if (!appUrl) {
@@ -558,7 +559,7 @@ function renderCard(p) {
     +       '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
     +     '</button>'
     // TikTok
-    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\',\'' + p.color + '-' + p.neckline + '\')">'
+    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/t/ZT983eLkjKUoD-DbDy4/\',\'' + p.color + '-' + p.neckline + '\')">'
     +       '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
     +       '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
     +     '</button>'
@@ -601,7 +602,7 @@ renderGrid();
     +       '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
     +     '</button>'
     // TikTok
-    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\',\'' + p.color + '-' + p.neckline + '\')">'
+    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/t/ZT983eLkjKUoD-DbDy4/\',\'' + p.color + '-' + p.neckline + '\')">'
     +       '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
     +       '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
     +     '</button>'
@@ -646,7 +647,7 @@ renderGrid();
     +       '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
     +     '</button>'
     // TikTok
-    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/shop/product/' + p.tiktok_id + '\',\'' + p.color + '-' + p.neckline + '\')">'
+    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/t/ZT983eLkjKUoD-DbDy4/\',\'' + p.color + '-' + p.neckline + '\')">'
     +       '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
     +       '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
     +     '</button>'

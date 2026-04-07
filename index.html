@@ -544,7 +544,9 @@ function renderCard(p) {
     + '<div class="card-right">'
     +   '<div class="card-title">' + p.title + '</div>'
     +   '<div class="card-meta">' + p.neckline + ' · 2-Piece Set · S\u20134XL</div>'
-    +   '<div class="price-row"><span class="price">
+    +   '<div class="price-row"><span class="price">$' + p.price.toFixed(2) + '</span><span class="price-orig">$' + p.compareAt.toFixed(2) + '</span><span class="price-save">Save ' + save + '%</span></div>'
+    +   '<div class="coupon-bar">&#127903; <span>' + T.couponText + '</span> <span class="coupon-code">7TY35TAK</span> <span class="coupon-off">&#8594; 29% OFF</span></div>'
+    +   '<div class="size-label">' + T.sizeChoose + '</div>'
     +   '<div class="size-picker">' + szBtns + '</div>'
     +   '<div class="where-divider">🛒 ' + T.whereLabel + '</div>'
     +   '<div class="channels">'

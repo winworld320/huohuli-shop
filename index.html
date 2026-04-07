@@ -178,11 +178,7 @@
 
 <div class="filter-bar" id="filterBar">
   <button class="filter-btn active" data-color="all" onclick="filterColor(this)">All Colors</button>
-  <button class="filter-btn" data-color="Black" onclick="filterColor(this)">⚫ Black</button>
-  <button class="filter-btn" data-color="Burgundy" onclick="filterColor(this)">🟥 Burgundy</button>
-  <button class="filter-btn" data-color="Blue" onclick="filterColor(this)">🔵 Blue</button>
-  <button class="filter-btn" data-color="Army Green" onclick="filterColor(this)">🟢 Army Green</button>
-  <button class="filter-btn" data-color="Coffee" onclick="filterColor(this)">🟫 Coffee</button>
+  <!-- 新产品添加后，在这里补充颜色筛选按钮 -->
 </div>
 
 <div class="grid-wrap">
@@ -394,82 +390,17 @@ function openChannel(platform, id, webUrl, productTitle) {
 // PRODUCT DATA
 // ══════════════════════════════════════════════
 const PRODUCTS = [
-  {
-    id:1, color:"Black", neckline:"V-Neck",
-    title:"Women's V-Neck Black Pajamas Set",
-    images:[
-      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41uXiJ88klL._AC_SL1500_f5d8bc00-01ee-45dd-8ee8-806d3241285d.jpg?v=1775133723",
-      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51r6KVTxZlL._AC_SL1500_cc59bac1-a590-4dd4-b9ad-804898b2bf74.jpg?v=1775133723"
-    ],
-    price:27.99, compareAt:45.99,
-    handle:"womens-v-neck-black-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
-    amazon_asin:"B0GV3RBNQW", amazon_url:"",
-    tiktok_id:"7280796906951263274",
-    variants:{S:44831599558726,M:44831599591494,L:44831599624262,XL:44831599657030,"2XL":44831599689798,"3XL":44831599722566,"4XL":44831599755334}
-  },
-  {
-    id:2, color:"Burgundy", neckline:"V-Neck",
-    title:"Women's V-Neck Burgundy Pajamas Set",
-    images:[
-      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41xQ9aaikTL._AC_SL1500_460fbaa3-c31b-4418-a2a6-be3b1a8f31bc.jpg?v=1775133759",
-      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51BM2gea_XL._AC_SL1500_7e035cc4-a10c-41ba-a3a1-0330151cbad1.jpg?v=1775133759"
-    ],
-    price:27.99, compareAt:45.99,
-    handle:"womens-v-neck-burgundy-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
-    amazon_asin:"B0GV3RBNQW", amazon_url:"",
-    tiktok_id:"7280796906951263274",
-    variants:{S:44831600279622,M:44831600312390,L:44831600345158,XL:44831600377926,"2XL":44831600410694,"3XL":44831600443462,"4XL":44831600476230}
-  },
-  {
-    id:3, color:"Blue", neckline:"V-Neck",
-    title:"Women's V-Neck Blue Pajamas Set",
-    images:["https://cdn.shopify.com/s/files/1/0721/2852/8454/files/512wG4OZsnL._AC_SL1500_289f8b38-4569-4f2e-a631-78170974e6ed.jpg?v=1775133741"],
-    price:27.99, compareAt:45.99,
-    handle:"womens-v-neck-blue-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
-    amazon_asin:"B0GV3RBNQW", amazon_url:"",
-    tiktok_id:"7280796906951263274",
-    variants:{S:44831599886406,M:44831599919174,L:44831599951942,XL:44831599984710,"2XL":44831600017478,"3XL":44831600050246,"4XL":44831600083014}
-  },
-  {
-    id:4, color:"Army Green", neckline:"V-Neck",
-    title:"Women's V-Neck Army Green Pajamas Set",
-    images:["https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41BAuf8oXRL._AC_SL1500_066175a6-2867-4bc9-9522-dc591614beb9.jpg?v=1775133705"],
-    price:27.99, compareAt:45.99,
-    handle:"womens-v-neck-army-green-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
-    amazon_asin:"B0GV3RBNQW", amazon_url:"",
-    tiktok_id:"7280796906951263274",
-    variants:{S:44831599132742,M:44831599165510,L:44831599198278,XL:44831599231046,"2XL":44831599263814,"3XL":44831599296582,"4XL":44831599329350}
-  },
-  {
-    id:5, color:"Coffee", neckline:"V-Neck",
-    title:"Women's V-Neck Coffee Pajamas Set",
-    images:["https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51TcI3W73ZL._AC_SL1500_508072b6-c8d3-47b7-afca-7cd0ab72823b.jpg?v=1775133776"],
-    price:27.99, compareAt:45.99,
-    handle:"womens-v-neck-coffee-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
-    amazon_asin:"B0GV3RBNQW", amazon_url:"",
-    tiktok_id:"7280796906951263274",
-    variants:{S:44831600541766,M:44831600574534,L:44831600607302,XL:44831600640070,"2XL":44831600672838,"3XL":44831600705606,"4XL":44831600738374}
-  },
-  {
-    id:6, color:"Burgundy", neckline:"Round Neck",
-    title:"Women's Round Neck Burgundy Pajamas Set",
-    images:["https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41xQ9aaikTL._AC_SL1500_460fbaa3-c31b-4418-a2a6-be3b1a8f31bc.jpg?v=1775133759"],
-    price:27.99, compareAt:45.99,
-    handle:"womens-round-neck-burgundy-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
-    amazon_asin:"B0GV3RBNQW", amazon_url:"",
-    tiktok_id:"7280796906951263274",
-    variants:{S:44831598313542,M:44831598346310,L:44831598379078,XL:44831598411846,"2XL":44831598444614,"3XL":44831598477382,"4XL":44831598510150}
-  },
-  {
-    id:7, color:"Coffee", neckline:"Round Neck",
-    title:"Women's Round Neck Coffee Pajamas Set",
-    images:["https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41ywQwutfxL._AC_SL1500_a5e90cc4-0f08-4f94-a70c-672a38256ec5.jpg?v=1775133673"],
-    price:27.99, compareAt:45.99,
-    handle:"womens-round-neck-coffee-short-sleeve-pajamas-set-soft-2-piece-loungewear-s-4xl",
-    amazon_asin:"B0GV3RBNQW", amazon_url:"",
-    tiktok_id:"7280796906951263274",
-    variants:{S:44831598608454,M:44831598641222,L:44831598673990,XL:44831598706758,"2XL":44831598739526,"3XL":44831598772294,"4XL":44831598805062}
-  }
+  // 新产品请按以下格式添加：
+  // {
+  //   id:1, color:"颜色", neckline:"领型",
+  //   title:"产品标题",
+  //   images:["图片URL1","图片URL2"],
+  //   price:价格, compareAt:原价,
+  //   handle:"shopify-handle",
+  //   amazon_asin:"ASIN", amazon_url:"",
+  //   tiktok_id:"TikTok商品ID",
+  //   variants:{S:id,M:id,L:id,XL:id,"2XL":id,"3XL":id,"4XL":id}
+  // }
 ];
 
 const state = {};

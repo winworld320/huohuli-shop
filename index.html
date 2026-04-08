@@ -287,10 +287,16 @@ function openChannel(platform, id, webUrl, productTitle) {
     return;
   }
 
-  // TikTok / 微信内置浏览器：直接 location.href 跳 App Scheme，1秒没响应跳网页
+  // TikTok / 微信内置浏览器：
+  // Amazon: 直接跳 webUrl，iOS Universal Link 机制会自动打开 App
+  // TikTok: 先尝试 App Scheme，1秒后降级网页
   if (isTikTokBrowser || isWechat) {
-    window.location.href = appUrl;
-    setTimeout(function(){ window.location.href = webUrl; }, 1000);
+    if (platform === 'amazon') {
+      window.location.href = webUrl;
+    } else {
+      window.location.href = appUrl;
+      setTimeout(function(){ window.location.href = webUrl; }, 1000);
+    }
     return;
   }
 

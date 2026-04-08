@@ -24,9 +24,9 @@
     html{scroll-behavior:smooth}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-    header{position:sticky;top:0;z-index:50;background:rgba(255,245,247,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,245,247,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:54px}
     .logo{display:flex;align-items:center;text-decoration:none}
-    .logo img{height:66px;width:auto;display:block}
+    .logo img{height:38px;width:auto;display:block}
     .header-badge{font-size:.72rem;background:rgba(214,93,14,.15);border:1px solid rgba(214,93,14,.3);color:var(--brand);border-radius:20px;padding:3px 10px;font-weight:600;letter-spacing:.5px}
     .chip{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--muted)}
 
@@ -141,12 +141,10 @@
 </header>
 
 
-</div>
 
 
 <div class="grid-wrap">
   <div class="product-grid" id="productGrid"></div>
-</div>
 
 <footer>
   <p>© 2026 PHEEFEE&HUOHULI · <span id="footerNote">Links open on third-party platforms</span></p>
@@ -325,17 +323,38 @@ function openChannel(platform, id, webUrl, productTitle) {
 // PRODUCT DATA
 // ══════════════════════════════════════════════
 const PRODUCTS = [
-  // 新产品请按以下格式添加：
-  // {
-  //   id:1, color:"颜色", neckline:"领型",
-  //   title:"产品标题",
-  //   images:["图片URL1","图片URL2"],
-  //   price:价格, compareAt:原价,
-  //   handle:"shopify-handle",
-  //   amazon_asin:"ASIN", amazon_url:"",
-  //   tiktok_id:"TikTok商品ID",
-  //   variants:{S:id,M:id,L:id,XL:id,"2XL":id,"3XL":id,"4XL":id}
-  // }
+  {
+    id:1, color:"V-Neck", neckline:"V-Neck",
+    title:"HUOHULI V-Neck Loungewear Set",
+    images:[
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41BAuf8oXRL._SL1500.jpg?v=1775620186",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41uXiJ88klL._SL1500.jpg?v=1775620186",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/512wG4OZsnL._SL1500.jpg?v=1775620186",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41xQ9aaikTL._SL1500.jpg?v=1775620187",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/51TcI3W73ZL._SL1500.jpg?v=1775620187"
+    ],
+    price:27.99, compareAt:45.99,
+    handle:"huohuli-v-neck-loungewear-set-soft-2-piece-pajamas-for-women-s-4xl",
+    amazon_asin:"B0GV3RBNQW", amazon_url:"https://amzn.to/3NNs2Ru",
+    tiktok_id:"7280796906951263274",
+    variants:{S:44853362786374,M:44853362819142,L:44853362851910,XL:44853362884678,"2XL":44853362917446,"3XL":44853362950214,"4XL":44853362982982}
+  },
+  {
+    id:2, color:"Round Neck", neckline:"Round Neck",
+    title:"HUOHULI Round Neck Loungewear Set",
+    images:[
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41FodJy5q2L._SL1500.jpg?v=1775620151",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41qUCKHQa0L._SL1500.jpg?v=1775620151",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/414_IC06fsL._SL1500.jpg?v=1775620151",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41k1DS-j6oL._SL1500.jpg?v=1775620151",
+      "https://cdn.shopify.com/s/files/1/0721/2852/8454/files/41ywQwutfxL._SL1500.jpg?v=1775620151"
+    ],
+    price:27.99, compareAt:45.99,
+    handle:"huohuli-round-neck-loungewear-set-soft-2-piece-pajamas-for-women-s-4xl",
+    amazon_asin:"B0GV3RBNQW", amazon_url:"https://amzn.to/3NNs2Ru",
+    tiktok_id:"7280796906951263274",
+    variants:{S:44853359575110,M:44853359607878,L:44853359640646,XL:44853359673414,"2XL":44853359706182,"3XL":44853359738950,"4XL":44853359771718}
+  }
 ];
 
 const state = {};
@@ -348,7 +367,7 @@ function getAmazonUrl(p) {
 function shopifyUrl(p) {
   const sz = state[p.id];
   const vid = sz ? p.variants[sz] : null;
-  const base = 'https://huohuli.myshopify.com/products/' + p.handle;
+  const base = 'https://phefee.com/products/' + p.handle;
   return vid ? base + '?variant=' + vid : base;
 }
 
@@ -421,7 +440,7 @@ function renderCard(p) {
     // Global label
     +     '<div class="region-row"><span class="region-text global-text">' + T.globalLabel + '</span></div>'
     // Shopify
-    +     '<a class="ch-btn btn-shopify" href="https://huohuli.myshopify.com/products/' + p.handle + '" target="_blank" onclick="gtag(\'event\',\'channel_click\',{platform:\'shopify\',product_name:\'' + p.color + '-' + p.neckline + '\'})">'
+    +     '<a class="ch-btn btn-shopify" href="https://phefee.com/products/' + p.handle + '" target="_blank" onclick="gtag(\'event\',\'channel_click\',{platform:\'shopify\',product_name:\'' + p.color + '-' + p.neckline + '\'})">'
     +       '<span style="font-size:1rem;line-height:1">🛍️</span>'
     +       '<span class="ch-label">' + T.btnShopify + '</span><span class="ch-tag">' + T.tagShopify + '</span>'
     +     '</a>'
@@ -430,15 +449,8 @@ function renderCard(p) {
     + '</div>';
 }
 
-let currentFilter = 'all';
-  currentFilter = btn.dataset.color;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderGrid();
-}
 function renderGrid() {
-  const filtered = currentFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.color === currentFilter);
-  document.getElementById('productGrid').innerHTML = filtered.map(renderCard).join('');
+  document.getElementById('productGrid').innerHTML = PRODUCTS.map(renderCard).join('');
 }
 renderGrid();
 </script>

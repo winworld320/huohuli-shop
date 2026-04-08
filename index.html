@@ -256,6 +256,25 @@ document.addEventListener('DOMContentLoaded', () => {
 // ══════════════════════════════════════════════
 // Deep Link logic
 // ══════════════════════════════════════════════
+function openExternal(productId, productName) {
+  gtag('event', 'channel_click', {platform: 'shopify', product_name: productName});
+  var p = PRODUCTS.find(function(x){ return x.id === productId; });
+  var url = shopifyUrl(p);
+  var ua = navigator.userAgent || '';
+  var isTikTok = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
+  var isWechat = /MicroMessenger/i.test(ua);
+  if (isTikTok || isWechat) {
+    var isAndroid = /android/i.test(ua);
+    if (isAndroid) {
+      window.location.href = 'intent://' + url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;action=android.intent.action.VIEW;end';
+    } else {
+      window.location.href = 'x-safari-https://' + url.replace(/^https?:\/\//, '');
+    }
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
 function openChannel(platform, id, webUrl, productTitle) {
   // GA4 事件追踪
   gtag('event', 'channel_click', {
@@ -279,7 +298,7 @@ function openChannel(platform, id, webUrl, productTitle) {
     }
   } else if (platform === 'tiktok') {
     appUrl = 'snssdk1233://webcast/room/';
-    webUrl = 'https://www.tiktok.com/t/ZT983eLkjKUoD-DbDy4/';
+    webUrl = 'https://vt.tiktok.com/ZTkS2JmT8/?page=TikTokShop';
   }
 
   if (!appUrl) {
@@ -439,17 +458,17 @@ function renderCard(p) {
     +       '<span class="ch-label">' + T.btnAmazon + '</span><span class="ch-tag">' + T.tagAmazon + '</span>'
     +     '</button>'
     // TikTok
-    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://www.tiktok.com/t/ZT983eLkjKUoD-DbDy4/\',\'' + p.color + '-' + p.neckline + '\')">'
+    +     '<button class="ch-btn btn-tiktok" onclick="openChannel(\'tiktok\',\'' + p.tiktok_id + '\',\'https://vt.tiktok.com/ZTkS2JmT8/?page=TikTokShop\',\'' + p.color + '-' + p.neckline + '\')">'
     +       '<svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>'
     +       '<span class="ch-label">' + T.btnTiktok + '</span><span class="ch-tag">' + T.tagTiktok + '</span>'
     +     '</button>'
     // Global label
     +     '<div class="region-row"><span class="region-text global-text">' + T.globalLabel + '</span></div>'
     // Shopify
-    +     '<a class="ch-btn btn-shopify" href="https://phefee.com/products/' + p.handle + '" target="_blank" onclick="gtag(\'event\',\'channel_click\',{platform:\'shopify\',product_name:\'' + p.color + '-' + p.neckline + '\'})">'
+    +     '<button class="ch-btn btn-shopify" onclick="openExternal(' + p.id + ',\'' + p.color + '-' + p.neckline + '\')">'
     +       '<span style="font-size:1rem;line-height:1">🛍️</span>'
     +       '<span class="ch-label">' + T.btnShopify + '</span><span class="ch-tag">' + T.tagShopify + '</span>'
-    +     '</a>'
+    +     '</button>'
     +   '</div>'
     + '</div>'
     + '</div>';
